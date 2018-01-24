@@ -59,6 +59,10 @@ class Apollo11GameSkill(MycroftSkill):
                  "GlovesApollo11Intent", "BootsApollo11Intent"]
         self.layers.add_layer(layer)  # 5
 
+        layer = ["StopApollo11Intent", "ExamineApollo11Intent",
+                 "IgnoreApollo11Intent"]
+        self.layers.add_layer(layer)  # 6
+
     # game start
     def handle_intro(self):
         self.speak_dialog("reach_gate")
@@ -165,10 +169,32 @@ class Apollo11GameSkill(MycroftSkill):
         else:
             self.speak_dialog("equip", {"item": item})
             self.equiped.append(item)
-    # boarding - layer 6
+
+    # board ship - layer 6
+    def handle_examine(self, message):
+        self.layers.activate_layer(8)
+        self.speak_dialog("examine")
+        self.speak_dialog("codes")
+
+    def handle_ignore(self, message):
+        self.speak_dialog("ignore")
+        self.layers.activate_layer(7)
+
+    # evacuation - layer 7
+
+    # launch codes - layer 8
+
+    # moon landing - layer 9
+
+    # stay on ship - layer 10
+
+    # land on moon - layer 11
+
+    # moon launch - layer 12
+
+    # return home - layer 13
 
     # control
-
     def handle_start_intent(self, message):
         if not self.playing:
             self.playing = True
@@ -205,7 +231,13 @@ class Apollo11GameSkill(MycroftSkill):
             self.briefing_question2()
         elif self.layers.current_layer == 4:
             self.suit_up()
-        
+        elif self.layers.current_layer == 5:
+            self.handle_board(None)
+        elif self.layers.current_layer == 6:
+            self.speak_dialog("boarding_dead")
+            self.handle_stop_intent(None)
+        else:
+            self.speak_dialog("invalid.command")
         return True
 
 
