@@ -260,8 +260,8 @@ class Apollo11GameSkill(MycroftSkill):
         self.briefing_question2()
 
     def handle_harsh(self, message):
-        self.briefing_question2()
         self.speak_dialog("briefing_harsh")
+        self.briefing_question2()
 
     def handle_silence(self, message):
         self.speak_dialog("briefing_silence")
@@ -373,7 +373,7 @@ class Apollo11GameSkill(MycroftSkill):
         self.layers.activate_layer(11)
 
     def handle_orbit(self, message):
-        self.speak_dialog("moon_stay")
+        self.speak_dialog("moon_stay", expect_response=True)
         self.layers.activate_layer(10)
 
     # stay on ship - layer 10
