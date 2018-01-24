@@ -1,6 +1,6 @@
 # Apollo 11 Space Game Skill
 
-WIP - not finished, don't even try
+Can you even moon land?
 
 land on the moon challenge, a mycroft adventure voice game
 
