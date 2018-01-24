@@ -22,6 +22,7 @@ class Apollo11GameSkill(MycroftSkill):
         self.entries = 0
         self.entered_code = []
         self.correct_code = ["9", "0", "2", "1", "0"]
+        # TODO read from dialog
         self.questions = ["Do you like me?",
                           "Do you think we'll survive?",
                           "Do you trust the team?",
@@ -45,6 +46,81 @@ class Apollo11GameSkill(MycroftSkill):
             require("StopKeyword"). \
             require("GameKeyword").build()
         self.register_intent(intent, self.handle_stop_intent)
+
+        # 1
+        intent = IntentBuilder("Yes1Apollo11Intent"). \
+            require("yesKeyword").build()
+        self.register_intent(intent, self.handle_yes1)
+
+        intent = IntentBuilder("Yes2Apollo11Intent"). \
+            require("yesKeyword").build()
+        self.register_intent(intent, self.handle_yes2)
+
+        # 2
+        intent = IntentBuilder("No1Apollo11Intent"). \
+            require("noKeyword").build()
+        self.register_intent(intent, self.handle_no1)
+
+        intent = IntentBuilder("No2Apollo11Intent"). \
+            require("noKeyword").build()
+        self.register_intent(intent, self.handle_no2)
+
+        # 3
+        intent = IntentBuilder("WarmApollo11Intent"). \
+            require("warmKeyword").build()
+        self.register_intent(intent, self.handle_warm)
+
+        intent = IntentBuilder("HarshApollo11Intent"). \
+            require("harshKeyword").build()
+        self.register_intent(intent, self.handle_harsh)
+
+        intent = IntentBuilder("NoAnswerApollo11Intent"). \
+            require("silentKeyword").build()
+        self.register_intent(intent, self.handle_silence)
+
+        # 4
+        # TODO "SurvivalApollo11Intent",
+        # TODO "BadSpeechApollo11Intent", "LetsDoItApollo11Intent"
+
+        # 5
+        # TODO "BoardApollo11Intent",
+        # TODO "SuitApollo11Intent", "HelmetApollo11Intent",
+        # TODO "GlovesApollo11Intent", "BootsApollo11Intent"
+
+        # 6
+        # TODO "ExamineApollo11Intent",
+        # TODO "IgnoreApollo11Intent"
+
+        # 7
+        # TODO "EvacuateApollo11Intent",
+        # TODO "StayApollo11Intent"
+
+        # 8
+        # TODO "CodeResetApollo11Intent"
+
+        # 9
+        # TODO "LandApollo11Intent",
+        # TODO "OrbitApollo11Intent"
+
+        # 10
+        intent = IntentBuilder("ColinYesApollo11Intent"). \
+            require("yesKeyword").build()
+        self.register_intent(intent, self.handle_orbit_yes)
+        intent = IntentBuilder("ColinNoApollo11Intent"). \
+            require("noKeyword").build()
+        self.register_intent(intent, self.handle_orbit_no)
+
+        # 11
+        # TODO "AbortLandingApollo11Intent",
+        # TODO "IgnoreLandingApollo11Intent"
+
+        # 12
+        intent = IntentBuilder("PencilNoApollo11Intent"). \
+            require("noKeyword").build()
+        self.register_intent(intent, self.handle_pencil_yes)
+        intent = IntentBuilder("PencilYesApollo11Intent"). \
+            require("yesKeyword").build()
+        self.register_intent(intent, self.handle_pencil_yes)
 
         # build layers
         layer = ["StartApollo11Intent"]
