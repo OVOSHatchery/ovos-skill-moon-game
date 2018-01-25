@@ -34,6 +34,11 @@ class Apollo11GameSkill(MycroftSkill):
         self.parser = IntentParser(self.emitter)
         self.layers = IntentLayers(self.emitter)
 
+        # TODO remove once PR#860 is merged
+        self.layers.disable_intent = self.disable_intent
+        self.layers.enable_intent = self.enable_intent
+
+
         questions = join(self.vocab_dir, self.lang + '/questions.voc')
         with open(questions) as f:
             self.questions = list(filter(bool, f.read().split('\n')))

@@ -7,7 +7,7 @@ land on the moon challenge, a mycroft adventure voice game
 # needs
 
 [PR#1351](https://github.com/MycroftAI/mycroft-core/pull/1351) - intent data
-[PR#860](https://github.com/MycroftAI/mycroft-core/pull/860) - intent enable/disable
+[PR#860](https://github.com/MycroftAI/mycroft-core/pull/860) - intent enable/disable (optional, backwards compatibility ensured)
 
 # credits
 
