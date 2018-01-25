@@ -38,20 +38,19 @@ class Apollo11GameSkill(MycroftSkill):
         self.layers.disable_intent = self.disable_intent
         self.layers.enable_intent = self.enable_intent
 
-
-        questions = join(self.vocab_dir, self.lang + '/questions.voc')
+        questions = join(self.vocab_dir, 'questions.voc')
         with open(questions) as f:
             self.questions = list(filter(bool, f.read().split('\n')))
 
         # build intents
         intent = IntentBuilder("StartApollo11Intent"). \
-            require("StartKeyword"). \
-            require("GameKeyword").build()
+            optionally("startKeyword"). \
+            require("MoonGameKeyword").build()
         self.register_intent(intent, self.handle_start_intent)
 
         intent = IntentBuilder("StopApollo11Intent"). \
-            require("StopKeyword"). \
-            require("GameKeyword").build()
+            require("stopKeyword"). \
+            require("MoonGameKeyword").build()
         self.register_intent(intent, self.handle_stop_intent)
 
         # 1
@@ -227,6 +226,24 @@ class Apollo11GameSkill(MycroftSkill):
                  "PencilNoApollo11Intent"]
         self.layers.add_layer(layer)  # 12
 
+        self.layers.reset()
+
+    # TODO remove once PR is merged
+    def enable_intent(self, intent_name):
+        """Reenable a registered intent"""
+        if ":" in intent_name:
+            intent_name = intent_name.split(":")[0]
+        for (name, intent) in self.registered_intents:
+            if name == intent_name:
+                self.registered_intents.remove((name, intent))
+                intent.name = name
+                self.register_intent(intent, None)
+                LOG.debug('Enabling intent ' + intent_name)
+                break
+            else:
+                LOG.error('Could not enable ' + intent_name +
+                          ', it hasn\'t been registered.')
+
     # game start
     def handle_intro(self):
         self.speak_dialog("reach_gate")
@@ -273,6 +290,7 @@ class Apollo11GameSkill(MycroftSkill):
         self.briefing_question2()
 
     def briefing_question2(self):
+        self.speak_dialog("speech")
         self.layers.activate_layer(4)
         self.speak_dialog("briefing_question2", expect_response=True)
 
@@ -296,11 +314,21 @@ class Apollo11GameSkill(MycroftSkill):
 
     # space suit - layer 5
     def handle_board(self, message):
-        if self.items != self.equiped:
+        if not self.can_board():
             self.speak_dialog("boarding_fail")
             return
+        self.board()
+
+    def board(self):
         self.layers.activate_layer(6)
         self.speak_dialog("boarding", expect_response=True)
+
+    def can_board(self):
+        can_board = True
+        for item in self.items:
+            if item not in self.equiped:
+                can_board = False
+        return can_board
 
     def handle_helmet(self, message):
         item = "helmet"
@@ -309,6 +337,8 @@ class Apollo11GameSkill(MycroftSkill):
         else:
             self.speak_dialog("equip", {"item": item})
             self.equiped.append(item)
+        if self.can_board():
+            self.board()
 
     def handle_boots(self, message):
         item = "boots"
@@ -317,6 +347,8 @@ class Apollo11GameSkill(MycroftSkill):
         else:
             self.speak_dialog("equip", {"item": item})
             self.equiped.append(item)
+        if self.can_board():
+            self.board()
 
     def handle_gloves(self, message):
         item = "gloves"
@@ -325,6 +357,8 @@ class Apollo11GameSkill(MycroftSkill):
         else:
             self.speak_dialog("equip", {"item": item})
             self.equiped.append(item)
+        if self.can_board():
+            self.board()
 
     def handle_body_suit(self, message):
         item = "body suit"
@@ -333,6 +367,8 @@ class Apollo11GameSkill(MycroftSkill):
         else:
             self.speak_dialog("equip", {"item": item})
             self.equiped.append(item)
+        if self.can_board():
+            self.board()
 
     # board ship - layer 6
     def handle_examine(self, message):
@@ -666,9 +702,11 @@ class IntentLayers(object):
 
         # enable layer
         LOG.info("Activating Layer " + str(layer_num))
-        for intent_name in self.layers[layer_num]:
-            self.enable_intent(intent_name)
-        return True
+        if layer_num < len(self.layers) and len(self.layers):
+            for intent_name in self.layers[layer_num]:
+                self.enable_intent(intent_name)
+            return True
+        return False
 
     def deactivate_layer(self, layer_num):
         # error check
