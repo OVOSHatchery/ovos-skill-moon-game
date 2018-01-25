@@ -4,7 +4,7 @@ from adapt.intent import IntentBuilder
 from mycroft.util.log import LOG
 from mycroft.messagebus.message import Message
 from mycroft.skills.core import MycroftSkill
-from mycroft.util.parse import extractnumber
+from mycroft.util.parse import extractnumber, normalize
 from os.path import join
 from time import time, sleep
 
@@ -239,10 +239,10 @@ class Apollo11GameSkill(MycroftSkill):
                 intent.name = name
                 self.register_intent(intent, None)
                 LOG.debug('Enabling intent ' + intent_name)
-                break
-            else:
-                LOG.error('Could not enable ' + intent_name +
-                          ', it hasn\'t been registered.')
+                return True
+        LOG.error('Could not enable ' + intent_name +
+                  ', it hasn\'t been registered.')
+        return False
 
     # game start
     def handle_intro(self):
@@ -488,7 +488,8 @@ class Apollo11GameSkill(MycroftSkill):
     def converse(self, utterances, lang="en-us"):
         if not self.playing:
             return False
-        intent, skill_id = self.parser.determine_intent(utterances[0], lang)
+        utterance = normalize(utterances[0], lang)
+        intent, skill_id = self.parser.determine_intent(utterance, lang)
         # will an intent from this skill trigger ?
         if skill_id == self.skill_id:
             # let it pass
@@ -511,8 +512,18 @@ class Apollo11GameSkill(MycroftSkill):
             self.speak_dialog("evacuate_dead")
             self.handle_stop_intent(None)
         elif self.layers.current_layer == 8:
-            number = extractnumber(utterances[0], lang)
-            if number.isdigit():
+            number = extractnumber(utterance, lang)
+
+            if not number and "0" in utterance:
+                number = "0"
+            else:
+                if isinstance(number, float):
+                    number = int(number)
+                number = str(number)
+
+            if len(number) > 1:
+                self.speak_dialog("code_one_at_time")
+            elif number.isdigit():
                 self.entered_code.append(number)
                 self.speak_dialog("code_enter_number", {"number": number},
                                   expect_response=True)
@@ -564,7 +575,7 @@ class IntentParser(object):
         t = 0
         while self.waiting and t < self.time_out:
             t = time() - start_time
-        if self.waiting:
+        if self.waiting or self.intent_data is None:
             return None, None
         id, intent = self.intent_data["type"].split(":")
         return intent, id
