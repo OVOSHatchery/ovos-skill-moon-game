@@ -35,8 +35,11 @@ class Apollo11GameSkill(MycroftSkill):
         self.layers = IntentLayers(self.emitter)
 
         # TODO remove once PR#860 is merged
-        self.layers.disable_intent = self.disable_intent
-        self.layers.enable_intent = self.enable_intent
+        try:
+            self.handle_enable_intent(Message("", {"intent_name": "dummy"}))
+        except:
+            self.layers.disable_intent = self.disable_intent
+            self.layers.enable_intent = self.enable_intent
 
         questions = join(self.vocab_dir, 'questions.voc')
         with open(questions) as f:
