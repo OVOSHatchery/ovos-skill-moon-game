@@ -7,6 +7,7 @@ from mycroft.skills.core import MycroftSkill
 from mycroft.util.parse import extractnumber, normalize
 from os.path import join
 from time import time, sleep
+from mycroft_jarbas_utils.intent.layers import IntentLayers
 
 __author__ = 'jarbas'
 
@@ -32,12 +33,14 @@ class Apollo11GameSkill(MycroftSkill):
 
     def initialize(self):
         self.parser = IntentParser(self.emitter)
-        self.layers = IntentLayers(self.emitter)
+
 
         # TODO remove once PR#860 is merged
         try:
             self.handle_enable_intent(Message("", {"intent_name": "dummy"}))
+            self.layers = IntentLayers(self.emitter)
         except:
+            self.layers = IntentLayers(self.emitter, override=True)
             self.layers.disable_intent = self.disable_intent
             self.layers.enable_intent = self.enable_intent
 
@@ -631,103 +634,3 @@ class IntentParser(object):
         self.skills_map = message.data
         self.waiting = False
 
-
-class IntentLayers(object):
-    def __init__(self, emitter, layers=None):
-        layers = layers or []
-        self.emitter = emitter
-        # make intent levels for N layers
-        self.layers = layers
-        self.current_layer = 0
-        self.activate_layer(0)
-
-    def disable_intent(self, intent_name):
-        """Disable a registered intent"""
-        self.emitter.emit(Message("disable_intent", {"intent_name": intent_name}))
-
-    def enable_intent(self, intent_name):
-        """Reenable a registered self intent"""
-        self.emitter.emit(Message("enable_intent", {"intent_name": intent_name}))
-
-    def reset(self):
-        LOG.info("Reseting Intent Layers")
-        self.activate_layer(0)
-
-    def next(self):
-        LOG.info("Going to next Intent Layer")
-        self.current_layer += 1
-        if self.current_layer > len(self.layers):
-            LOG.info("Already in last layer, going to layer 0")
-            self.current_layer = 0
-        self.activate_layer(self.current_layer)
-
-    def previous(self):
-        LOG.info("Going to previous Intent Layer")
-        self.current_layer -= 1
-        if self.current_layer < 0:
-            self.current_layer = len(self.layers)
-            LOG.info("Already in layer 0, going to last layer")
-        self.activate_layer(self.current_layer)
-
-    def add_layer(self, intent_list=None):
-        intent_list = intent_list or []
-        self.layers.append(intent_list)
-        LOG.info("Adding intent layer: " + str(intent_list))
-
-    def replace_layer(self, layer_num, intent_list=None):
-        intent_list = intent_list or []
-        self.layers[layer_num] = intent_list
-        LOG.info("Adding layer" + str(intent_list) + " in position " + str(layer_num))
-
-    def remove_layer(self, layer_num):
-        if layer_num >= len(self.layers):
-            return False
-        self.layers.pop(layer_num)
-        LOG.info("Removing layer number " + str(layer_num))
-        return True
-
-    def find_layer(self, intent_name):
-        layer_list = []
-        for i in range(0, len(self.layers)):
-            if intent_name in self.layers[i]:
-                layer_list.append(i)
-        return layer_list
-
-    def disable(self):
-        LOG.info("Disabling layers")
-        # disable all layers
-        for i in range(0, len(self.layers)):
-            self.deactivate_layer(i)
-
-    def activate_layer(self, layer_num):
-        # error check
-        if layer_num < 0 or layer_num > len(self.layers):
-            LOG.error("invalid layer number")
-            return False
-
-        self.current_layer = layer_num
-
-        # disable other layers
-        self.disable()
-
-        # TODO in here we should wait for all intents to be detached
-        # sometimes detach intent from this step comes after register from next
-        sleep(0.3)
-
-        # enable layer
-        LOG.info("Activating Layer " + str(layer_num))
-        if layer_num < len(self.layers) and len(self.layers):
-            for intent_name in self.layers[layer_num]:
-                self.enable_intent(intent_name)
-            return True
-        return False
-
-    def deactivate_layer(self, layer_num):
-        # error check
-        if layer_num < 0 or layer_num > len(self.layers):
-            LOG.error("invalid layer number")
-            return False
-        LOG.info("Deactivating Layer " + str(layer_num))
-        for intent_name in self.layers[layer_num]:
-            self.disable_intent(intent_name)
-        return True
