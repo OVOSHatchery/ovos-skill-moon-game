@@ -91,7 +91,6 @@ class Apollo11GameSkill(OVOSSkill):
     def handle_no1(self, message=None):
         self.speak_dialog("guard_no")
         self.speak_dialog("present_id", expect_response=True)
-        self.layers.activate_layer(2)
 
     # layer 2
     @layer_intent(IntentBuilder("Yes2Apollo11Intent").require("yesKeyword"),
