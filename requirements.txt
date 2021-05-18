@@ -1,1 +1,1 @@
-git+https://github.com/JarbasAl/mycroft_jarbas_utils
+ovos_workshop>=0.0.2a1
