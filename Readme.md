@@ -26,10 +26,10 @@ voice port of [Jordan Madrid's Apollo 11 Space Game](https://github.com/jrdnmadr
 
 # Platform support
 
-:heavy_check_mark: - tested and confirmed working
-:x: - incompatible/non-functional
-:question: - untested
-:construction: - partial support
+- :heavy_check_mark: - tested and confirmed working
+- :x: - incompatible/non-functional
+- :question: - untested
+- :construction: - partial support
 
 |     platform    |   status   |  tag  | version | last tested | 
 |:---------------:|:----------:|:-----:|:-------:|:-----------:|
@@ -43,5 +43,5 @@ voice port of [Jordan Madrid's Apollo 11 Space Game](https://github.com/jrdnmadr
 |     [Picroft](https://github.com/MycroftAI/enclosure-picroft)       | :question: |  dev  |         |    never    |  
 | [Plasma Bigscreen](https://plasma-bigscreen.org/)  | :question: |  dev  |         |    never    |  
 
-`tag` - link to github release / branch / commit
-`version` - link to release/commit of platform repo where this was tested
+- `tag` - link to github release / branch / commit
+- `version` - link to release/commit of platform repo where this was tested
