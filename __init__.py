@@ -38,9 +38,17 @@ class Apollo11GameSkill(OVOSSkill):
         self.intent_layers.disable()
 
     # game control
+    def handle_deactivate(self, message):
+        """ skill is no longer considered active by the intent service
+        converse method will not be called, skills might want to reset state here
+
+        HolmesV only + OVOS monkey patch skill (WIP)
+        """
+        self.handle_game_over(message)
+
     @intent_handler(IntentBuilder("StartApollo11Intent"). \
-                         optionally("startKeyword"). \
-                         require("MoonGameKeyword"))
+                    optionally("startKeyword"). \
+                    require("MoonGameKeyword"))
     def handle_start_intent(self, message=None):
         if not self.playing:
             self.playing = True
@@ -377,6 +385,7 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("pencil_no")
         self.handle_game_over()
 
+    # take corrective action
     def converse(self, utterances, lang="en-us"):
         if not self.playing:
             return False
