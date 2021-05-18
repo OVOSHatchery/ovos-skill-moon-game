@@ -6,7 +6,7 @@ from time import time, sleep
 from ovos_workshop.skills.decorators import layer_intent, enables_layer, \
     disables_layer, resets_layers, replaces_layer
 from ovos_workshop.skills import OVOSSkill
-from mycroft.skills.mycroft_skill.decorators import intent_file_handler
+from mycroft.skills.mycroft_skill.decorators import intent_handler
 from mycroft.skills.intent_service_interface import IntentQueryApi
 from mycroft.util.parse import extract_number, normalize
 
@@ -33,8 +33,12 @@ class Apollo11GameSkill(OVOSSkill):
             "Do you think we aren't alone in the universe",
             "Am I going to die on this trip?"]
 
+    def initialize(self):
+        # start with all game states disabled
+        self.intent_layers.disable()
+
     # game control
-    @intent_file_handler(IntentBuilder("StartApollo11Intent"). \
+    @intent_handler(IntentBuilder("StartApollo11Intent"). \
                          optionally("startKeyword"). \
                          require("MoonGameKeyword"))
     def handle_start_intent(self, message=None):
