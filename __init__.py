@@ -53,20 +53,20 @@ class Apollo11GameSkill(OVOSSkill):
                   require("stopKeyword"). \
                   optionally("MoonGameKeyword"),
                   layer_name="stop_game")
+    @resets_layers()
     def handle_game_over(self, message=None):
         if self.playing:
             self.speak_dialog("stop.game")
-            self.stop()
-
-    def stop(self):
-        if self.playing:
-            self.intent_layers.disable()
             self.playing = False
             self.equipped = []
             self.entries = 0
             self.sanity = 0
             self.current_question = 0
             self.entered_code = []
+
+    def stop(self):
+        if self.playing:
+            self.handle_game_over()
             return True
         return False
 
