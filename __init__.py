@@ -1,14 +1,10 @@
 from adapt.intent import IntentBuilder
-from mycroft.util.log import LOG
-from mycroft.messagebus.message import Message
-from os.path import join
-from time import time, sleep
-from ovos_workshop.skills.decorators import layer_intent, enables_layer, \
-    disables_layer, resets_layers, replaces_layer
-from ovos_workshop.skills import OVOSSkill
-from mycroft.skills.mycroft_skill.decorators import intent_handler
 from mycroft.skills.intent_service_interface import IntentQueryApi
-from mycroft.util.parse import extract_number, normalize
+from mycroft.skills.mycroft_skill.decorators import intent_handler
+from mycroft.util.parse import extract_number
+from ovos_workshop.skills import OVOSSkill
+from ovos_workshop.skills.decorators import layer_intent, enables_layer, \
+    disables_layer, resets_layers
 
 
 class Apollo11GameSkill(OVOSSkill):
@@ -24,7 +20,7 @@ class Apollo11GameSkill(OVOSSkill):
                                                       "boots",
                                                       "helmet",
                                                       "body suit"]
-        self.correct_code = ["9", "0", "2", "1", "0"]
+        self.code = ["9", "0", "2", "1", "0"]
         self.questions = self.translate_list("questions") or [
             "Do you like me?",
             "Do you think we'll survive?",
@@ -42,8 +38,9 @@ class Apollo11GameSkill(OVOSSkill):
         """ skill is no longer considered active by the intent service
         converse method will not be called, skills might want to reset state here
 
-        HolmesV only + OVOS monkey patch skill (WIP)
+        ovos-core only + OVOS monkey patch skill (WIP)
         """
+        self.log.debug("game abandoned! skill kicked out of active skill list!!!")
         self.handle_game_over(message)
 
     @intent_handler(IntentBuilder("StartApollo11Intent"). \
@@ -71,12 +68,6 @@ class Apollo11GameSkill(OVOSSkill):
             self.sanity = 0
             self.current_question = 0
             self.entered_code = []
-
-    def stop(self):
-        if self.playing:
-            self.handle_game_over()
-            return True
-        return False
 
     @enables_layer(layer_name="guard")
     @enables_layer(layer_name="stop_game")
@@ -107,8 +98,7 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("guard_yes_alternate")
         self.briefing_question1()
 
-    @layer_intent(IntentBuilder("No2Apollo11Intent"). \
-                  require("noKeyword"),
+    @layer_intent(IntentBuilder("No2Apollo11Intent").require("noKeyword"),
                   layer_name="guard2")
     def handle_no2(self, message=None):
         self.speak_dialog("guard_dead")
@@ -385,18 +375,29 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("pencil_no")
         self.handle_game_over()
 
+    def will_trigger(self, utterance, lang):
+        # will an intent from this skill trigger ?
+        skill_id = IntentQueryApi(self.bus).get_skill(utterance, lang)
+        if skill_id and skill_id == self.skill_id:
+            return True
+        return False
+
     # take corrective action
     def converse(self, utterances, lang="en-us"):
         if not self.playing:
             return False
 
+        if not utterances:
+            return True  # empty speech, happens if you write in cli answer
+            # while stt is active, gets 2 converses with cli utt + None
+
         for utterance in utterances:
             # will an intent from this skill trigger ?
-            skill_id = IntentQueryApi(self.bus).get_skill(utterance, lang)
-            if skill_id and skill_id == self.skill_id:
+            if self.will_trigger(utterance, lang):
                 # dont consume utterance, we accounted for this action with
                 # some intent
                 return False
+            self.log.debug("Skill wont trigger, handle game action in converse")
 
             # take corrective action when no intent matched
             if self.intent_layers.is_active("guard") or \
@@ -428,8 +429,8 @@ class Apollo11GameSkill(OVOSSkill):
                         self.speak_dialog("code_enter_number",
                                           {"number": number},
                                           expect_response=True)
-                        if len(self.entered_code) == len(self.correct_code):
-                            if self.entered_code == self.correct_code:
+                        if len(self.entered_code) == len(self.code):
+                            if self.entered_code == self.code:
                                 self.correct_code()
                             else:
                                 self.wrong_code()
