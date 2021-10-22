@@ -38,7 +38,7 @@ class Apollo11GameSkill(OVOSSkill):
         """ skill is no longer considered active by the intent service
         converse method will not be called, skills might want to reset state here
 
-        ovos-core only + OVOS monkey patch skill (WIP)
+        ovos-core only + OVOS monkey patch skill
         """
         self.log.debug("game abandoned! skill kicked out of active skill list!!!")
         self.handle_game_over(message)
