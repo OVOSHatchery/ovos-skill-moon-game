@@ -1,15 +1,15 @@
-from adapt.intent import IntentBuilder
-from mycroft.skills.intent_service_interface import IntentQueryApi
-from mycroft.skills.mycroft_skill.decorators import intent_handler
-from mycroft.util.parse import extract_number
+from ovos_workshop.intents import IntentBuilder
+from ovos_utils.intents.intent_service_interface import IntentQueryApi  # TODO - deprecated utils 0.1.0
+from ovos_workshop.decorators import intent_handler
+from lingua_franca.parse import extract_number
 from ovos_workshop.skills import OVOSSkill
-from ovos_workshop.skills.decorators import layer_intent, enables_layer, \
-    disables_layer, resets_layers
+from ovos_workshop.skills.decorators import layer_intent, enables_layer, disables_layer, resets_layers
 
 
 class Apollo11GameSkill(OVOSSkill):
-    def __init__(self):
-        super(Apollo11GameSkill, self).__init__()
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.playing = False
         self.equipped = []
         self.entries = 0
@@ -27,7 +27,8 @@ class Apollo11GameSkill(OVOSSkill):
             "Do you trust the team?",
             "Does mission control have confidence in us?",
             "Do you think we aren't alone in the universe",
-            "Am I going to die on this trip?"]
+            "Am I going to die on this trip?"
+        ]
 
     def initialize(self):
         # start with all game states disabled
@@ -125,9 +126,9 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("briefing_harsh")
         self.briefing_question2()
 
-    @layer_intent(IntentBuilder("NoAnswerApollo11Intent").
-                  require("silentKeyword"),
-                  layer_name="briefing")
+    @layer_intent(
+        IntentBuilder("NoAnswerApollo11Intent").require("silentKeyword"),
+        layer_name="briefing")
     def handle_silence(self, message=None):
         self.speak_dialog("briefing_silence")
         self.briefing_question2()
@@ -139,23 +140,23 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("briefing_question2", expect_response=True)
 
     # briefing 2 - layer 4
-    @layer_intent(IntentBuilder("SurvivalApollo11Intent").
-                  require("survivalKeyword"),
-                  layer_name="briefing2")
+    @layer_intent(
+        IntentBuilder("SurvivalApollo11Intent").require("survivalKeyword"),
+        layer_name="briefing2")
     def handle_percentage(self, message=None):
         self.speak_dialog("briefing_percentage")
         self.suit_up()
 
-    @layer_intent(IntentBuilder("BadSpeechApollo11Intent").
-                  require("speechKeyword"),
-                  layer_name="briefing2")
+    @layer_intent(
+        IntentBuilder("BadSpeechApollo11Intent").require("speechKeyword"),
+        layer_name="briefing2")
     def handle_terrible(self, message=None):
         self.speak_dialog("briefing_terrible")
         self.suit_up()
 
-    @layer_intent(IntentBuilder("LetsDoItApollo11Intent").
-                  require("dothisKeyword"),
-                  layer_name="briefing2")
+    @layer_intent(
+        IntentBuilder("LetsDoItApollo11Intent").require("dothisKeyword"),
+        layer_name="briefing2")
     def handle_lets_do_this(self, message=None):
         self.speak_dialog("briefing_lets_do_this")
         self.suit_up()
@@ -167,8 +168,7 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("suit_up", expect_response=True)
 
     # space suit - layer 5
-    @layer_intent(IntentBuilder("BoardApollo11Intent").
-                  require("boardKeyword"),
+    @layer_intent(IntentBuilder("BoardApollo11Intent").require("boardKeyword"),
                   layer_name="suit_up")
     def handle_board(self, message=None):
         if not self.can_board():
@@ -176,9 +176,9 @@ class Apollo11GameSkill(OVOSSkill):
             return
         self.board()
 
-    @layer_intent(IntentBuilder("HelmetApollo11Intent").
-                  require("helmetKeyword"),
-                  layer_name="suit_up")
+    @layer_intent(
+        IntentBuilder("HelmetApollo11Intent").require("helmetKeyword"),
+        layer_name="suit_up")
     def handle_helmet(self, message=None):
         item = "helmet"
         if item in self.equipped:
@@ -189,8 +189,7 @@ class Apollo11GameSkill(OVOSSkill):
         if self.can_board():
             self.board()
 
-    @layer_intent(IntentBuilder("BootsApollo11Intent").
-                  require("bootsKeyword"),
+    @layer_intent(IntentBuilder("BootsApollo11Intent").require("bootsKeyword"),
                   layer_name="suit_up")
     def handle_boots(self, message=None):
         item = "boots"
@@ -202,9 +201,9 @@ class Apollo11GameSkill(OVOSSkill):
         if self.can_board():
             self.board()
 
-    @layer_intent(IntentBuilder("GlovesApollo11Intent").
-                  require("glovesKeyword"),
-                  layer_name="suit_up")
+    @layer_intent(
+        IntentBuilder("GlovesApollo11Intent").require("glovesKeyword"),
+        layer_name="suit_up")
     def handle_gloves(self, message=None):
         item = "gloves"
         if item in self.equipped:
@@ -215,9 +214,9 @@ class Apollo11GameSkill(OVOSSkill):
         if self.can_board():
             self.board()
 
-    @layer_intent(IntentBuilder("SuitApollo11Intent").
-                  require("spacesuitKeyword"),
-                  layer_name="suit_up")
+    @layer_intent(
+        IntentBuilder("SuitApollo11Intent").require("spacesuitKeyword"),
+        layer_name="suit_up")
     def handle_body_suit(self, message=None):
         item = "body suit"
         if item in self.equipped:
@@ -246,9 +245,9 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("examine")
         self.speak_dialog("codes", expect_response=True)
 
-    @layer_intent(IntentBuilder("IgnoreApollo11Intent").
-                  require("ignoreKeyword"),
-                  layer_name="boarding")
+    @layer_intent(
+        IntentBuilder("IgnoreApollo11Intent").require("ignoreKeyword"),
+        layer_name="boarding")
     @enables_layer(layer_name="evacuation")
     @disables_layer(layer_name="boarding")
     def handle_ignore(self, message=None):
@@ -270,9 +269,9 @@ class Apollo11GameSkill(OVOSSkill):
         self.handle_game_over()
 
     # launch codes - layer 8
-    @layer_intent(IntentBuilder("CodeResetApollo11Intent").
-                  require("CodeResetKeyword"),
-                  layer_name="launch_codes")
+    @layer_intent(
+        IntentBuilder("CodeResetApollo11Intent").require("CodeResetKeyword"),
+        layer_name="launch_codes")
     def handle_reset_code(self, message=None):
         if self.entries > 3:
             self.speak_dialog("bad.code")
@@ -358,17 +357,16 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("moon_launch", expect_response=True)
 
     # moon launch - layer 12
-    @layer_intent(IntentBuilder("PencilYesApollo11Intent").
-                  require("yesKeyword"),
-                  layer_name="pencil")
+    @layer_intent(
+        IntentBuilder("PencilYesApollo11Intent").require("yesKeyword"),
+        layer_name="pencil")
     @disables_layer(layer_name="pencil")
     def handle_pencil_yes(self, message=None):
         self.speak_dialog("pencil_yes")
         self.speak_dialog("go_home")
         self.handle_game_over()
 
-    @layer_intent(IntentBuilder("PencilNoApollo11Intent").
-                  require("noKeyword"),
+    @layer_intent(IntentBuilder("PencilNoApollo11Intent").require("noKeyword"),
                   layer_name="pencil")
     @disables_layer(layer_name="pencil")
     def handle_pencil_no(self, message=None):
@@ -397,7 +395,8 @@ class Apollo11GameSkill(OVOSSkill):
                 # dont consume utterance, we accounted for this action with
                 # some intent
                 return False
-            self.log.debug("Skill wont trigger, handle game action in converse")
+            self.log.debug(
+                "Skill wont trigger, handle game action in converse")
 
             # take corrective action when no intent matched
             if self.intent_layers.is_active("guard") or \
@@ -444,7 +443,3 @@ class Apollo11GameSkill(OVOSSkill):
             else:
                 self.speak_dialog("invalid.command", expect_response=True)
         return True
-
-
-def create_skill():
-    return Apollo11GameSkill()
