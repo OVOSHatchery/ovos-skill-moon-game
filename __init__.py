@@ -1,9 +1,12 @@
-from ovos_workshop.intents import IntentBuilder
-from ovos_utils.intents.intent_service_interface import IntentQueryApi  # TODO - deprecated utils 0.1.0
+from typing import Optional, Dict
+
+from ovos_bus_client.message import Message
+from ovos_bus_client.util import get_message_lang
+from ovos_number_parser import extract_number
 from ovos_workshop.decorators import intent_handler
-from lingua_franca.parse import extract_number
+from ovos_workshop.decorators import layer_intent, enables_layer, disables_layer, resets_layers
+from ovos_workshop.intents import IntentBuilder
 from ovos_workshop.skills import OVOSSkill
-from ovos_workshop.skills.decorators import layer_intent, enables_layer, disables_layer, resets_layers
 
 
 class Apollo11GameSkill(OVOSSkill):
@@ -16,12 +19,12 @@ class Apollo11GameSkill(OVOSSkill):
         self.current_question = 0
         self.sanity = 0
         self.entered_code = []
-        self.items = self.translate_list("items") or ["gloves",
-                                                      "boots",
-                                                      "helmet",
-                                                      "body suit"]
+        self.items = self.resources.load_list_file("items") or ["gloves",
+                                                                "boots",
+                                                                "helmet",
+                                                                "body suit"]
         self.code = ["9", "0", "2", "1", "0"]
-        self.questions = self.translate_list("questions") or [
+        self.questions = self.resources.load_list_file("questions") or [
             "Do you like me?",
             "Do you think we'll survive?",
             "Do you trust the team?",
@@ -373,15 +376,29 @@ class Apollo11GameSkill(OVOSSkill):
         self.speak_dialog("pencil_no")
         self.handle_game_over()
 
-    def will_trigger(self, utterance, lang):
-        # will an intent from this skill trigger ?
-        skill_id = IntentQueryApi(self.bus).get_skill(utterance, lang)
-        if skill_id and skill_id == self.skill_id:
-            return True
-        return False
+    def calc_intent(self, utterance: str, lang: str) -> Optional[Dict[str, str]]:
+        # let's see what intent ovos-core will assign to the utterance
+        # NOTE: converse, common_query and fallbacks are not included in this check
+        response = self.bus.wait_for_response(Message("intent.service.intent.get",
+                                                      {"utterance": utterance, "lang": lang}),
+                                              "intent.service.intent.reply",
+                                              timeout=0.5)
+        if not response:
+            return None
+        return response.data["intent"]
+
+    def will_trigger(self, utterance: str, lang: str) -> bool:
+        # determine if an intent from this skill
+        # will be selected by ovos-core
+        intent = self.calc_intent(utterance, lang)
+        skill_id = intent["skill_id"] if intent else ""
+        return skill_id == self.skill_id
 
     # take corrective action
-    def converse(self, utterances, lang="en-us"):
+    def converse(self, message: Message):
+        utterances = message.data["utterances"]
+        lang = get_message_lang(message)
+
         if not self.playing:
             return False
 
@@ -417,7 +434,7 @@ class Apollo11GameSkill(OVOSSkill):
                 self.speak_dialog("evacuate_dead")
                 self.handle_game_over()
             elif self.intent_layers.is_active("launch_codes"):
-                number = extract_number(utterance)
+                number = extract_number(utterance, lang=lang)
                 if number is not False:
                     number = str(int(number))
                     if len(number) > 1:
