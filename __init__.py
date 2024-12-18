@@ -1,3 +1,4 @@
+import os.path
 from typing import List
 
 from ovos_number_parser import extract_number
@@ -9,9 +10,10 @@ from ovos_workshop.skills.game_skill import ConversationalGameSkill
 class Apollo11GameSkill(ConversationalGameSkill):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(skill_voc_filename="", # TODO
-                         skill_icon="", # TODO
-                         game_image = "", # TODO
+        img = os.path.join(os.path.dirname(__file__), "res", "img.png")
+        icon = os.path.join(os.path.dirname(__file__), "res", "img_small.png")
+        super().__init__(skill_voc_filename="MoonGameKeyword",
+                         skill_icon=icon, game_image=img,
                          *args, **kwargs)
         self.equipped = []
         self.entries = 0
@@ -133,13 +135,15 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.entered_code = []
 
     # layer 1
-    @layer_intent(IntentBuilder("Yes1Apollo11Intent").require("yesKeyword"),
+    @layer_intent(IntentBuilder("Yes1Apollo11Intent").
+                  require("yesKeyword"),
                   layer_name="guard")
     def handle_yes1(self, message=None):
         self.speak_dialog("guard_yes")
         self.briefing_question1()
 
-    @layer_intent(IntentBuilder("No1Apollo11Intent").require("noKeyword"),
+    @layer_intent(IntentBuilder("No1Apollo11Intent").
+                  require("noKeyword"),
                   layer_name="guard")
     @enables_layer(layer_name="guard2")
     @disables_layer(layer_name="guard")
@@ -148,13 +152,15 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("present_id", expect_response=True)
 
     # layer 2
-    @layer_intent(IntentBuilder("Yes2Apollo11Intent").require("yesKeyword"),
+    @layer_intent(IntentBuilder("Yes2Apollo11Intent").
+                  require("yesKeyword"),
                   layer_name="guard2")
     def handle_yes2(self, message=None):
         self.speak_dialog("guard_yes_alternate")
         self.briefing_question1()
 
-    @layer_intent(IntentBuilder("No2Apollo11Intent").require("noKeyword"),
+    @layer_intent(IntentBuilder("No2Apollo11Intent").
+                  require("noKeyword"),
                   layer_name="guard2")
     def handle_no2(self, message=None):
         self.speak_dialog("guard_dead")
@@ -169,20 +175,23 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("briefing_question", expect_response=True)
 
     # briefing 1 - layer 3
-    @layer_intent(IntentBuilder("WarmApollo11Intent").require("warmKeyword"),
+    @layer_intent(IntentBuilder("WarmApollo11Intent").
+                  require("warmKeyword"),
                   layer_name="briefing")
     def handle_warm(self, message=None):
         self.speak_dialog("briefing_warm")
         self.briefing_question2()
 
-    @layer_intent(IntentBuilder("HarshApollo11Intent").require("harshKeyword"),
+    @layer_intent(IntentBuilder("HarshApollo11Intent").
+                  require("harshKeyword"),
                   layer_name="briefing")
     def handle_harsh(self, message=None):
         self.speak_dialog("briefing_harsh")
         self.briefing_question2()
 
     @layer_intent(
-        IntentBuilder("NoAnswerApollo11Intent").require("silentKeyword"),
+        IntentBuilder("NoAnswerApollo11Intent").
+        require("silentKeyword"),
         layer_name="briefing")
     def handle_silence(self, message=None):
         self.speak_dialog("briefing_silence")
@@ -196,21 +205,24 @@ class Apollo11GameSkill(ConversationalGameSkill):
 
     # briefing 2 - layer 4
     @layer_intent(
-        IntentBuilder("SurvivalApollo11Intent").require("survivalKeyword"),
+        IntentBuilder("SurvivalApollo11Intent").
+        require("survivalKeyword"),
         layer_name="briefing2")
     def handle_percentage(self, message=None):
         self.speak_dialog("briefing_percentage")
         self.suit_up()
 
     @layer_intent(
-        IntentBuilder("BadSpeechApollo11Intent").require("speechKeyword"),
+        IntentBuilder("BadSpeechApollo11Intent").
+        require("speechKeyword"),
         layer_name="briefing2")
     def handle_terrible(self, message=None):
         self.speak_dialog("briefing_terrible")
         self.suit_up()
 
     @layer_intent(
-        IntentBuilder("LetsDoItApollo11Intent").require("dothisKeyword"),
+        IntentBuilder("LetsDoItApollo11Intent").
+        require("dothisKeyword"),
         layer_name="briefing2")
     def handle_lets_do_this(self, message=None):
         self.speak_dialog("briefing_lets_do_this")
@@ -223,7 +235,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("suit_up", expect_response=True)
 
     # space suit - layer 5
-    @layer_intent(IntentBuilder("BoardApollo11Intent").require("boardKeyword"),
+    @layer_intent(IntentBuilder("BoardApollo11Intent").
+                  require("boardKeyword"),
                   layer_name="suit_up")
     def handle_board(self, message=None):
         if not self.can_board():
@@ -232,7 +245,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.board()
 
     @layer_intent(
-        IntentBuilder("HelmetApollo11Intent").require("helmetKeyword"),
+        IntentBuilder("HelmetApollo11Intent").
+        require("helmetKeyword"),
         layer_name="suit_up")
     def handle_helmet(self, message=None):
         item = "helmet"
@@ -244,7 +258,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
         if self.can_board():
             self.board()
 
-    @layer_intent(IntentBuilder("BootsApollo11Intent").require("bootsKeyword"),
+    @layer_intent(IntentBuilder("BootsApollo11Intent").
+                  require("bootsKeyword"),
                   layer_name="suit_up")
     def handle_boots(self, message=None):
         item = "boots"
@@ -257,7 +272,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
             self.board()
 
     @layer_intent(
-        IntentBuilder("GlovesApollo11Intent").require("glovesKeyword"),
+        IntentBuilder("GlovesApollo11Intent").
+        require("glovesKeyword"),
         layer_name="suit_up")
     def handle_gloves(self, message=None):
         item = "gloves"
@@ -270,7 +286,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
             self.board()
 
     @layer_intent(
-        IntentBuilder("SuitApollo11Intent").require("spacesuitKeyword"),
+        IntentBuilder("SuitApollo11Intent").
+        require("spacesuitKeyword"),
         layer_name="suit_up")
     def handle_body_suit(self, message=None):
         item = "body suit"
@@ -291,7 +308,7 @@ class Apollo11GameSkill(ConversationalGameSkill):
         return all(item in self.equipped for item in self.items)
 
     # board ship - layer 6
-    @layer_intent(IntentBuilder("ExamineApollo11Intent"). \
+    @layer_intent(IntentBuilder("ExamineApollo11Intent").
                   require("examineKeyword"),
                   layer_name="boarding")
     @enables_layer(layer_name="launch_codes")
@@ -301,7 +318,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("codes", expect_response=True)
 
     @layer_intent(
-        IntentBuilder("IgnoreApollo11Intent").require("ignoreKeyword"),
+        IntentBuilder("IgnoreApollo11Intent").
+        require("ignoreKeyword"),
         layer_name="boarding")
     @enables_layer(layer_name="evacuation")
     @disables_layer(layer_name="boarding")
@@ -309,14 +327,14 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("ignore", expect_response=True)
 
     # evacuation - layer 7
-    @layer_intent(IntentBuilder("EvacuateApollo11Intent"). \
+    @layer_intent(IntentBuilder("EvacuateApollo11Intent").
                   require("evacuateKeyword"),
                   layer_name="evacuation")
     def handle_evacuate(self, message=None):
         self.speak_dialog("evacuate_gameover")
         self.handle_game_over()
 
-    @layer_intent(IntentBuilder("StayApollo11Intent"). \
+    @layer_intent(IntentBuilder("StayApollo11Intent").
                   require("stayKeyword"),
                   layer_name="evacuation")
     def handle_stay(self, message=None):
@@ -325,7 +343,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
 
     # launch codes - layer 8
     @layer_intent(
-        IntentBuilder("CodeResetApollo11Intent").require("CodeResetKeyword"),
+        IntentBuilder("CodeResetApollo11Intent").
+        require("CodeResetKeyword"),
         layer_name="launch_codes")
     def handle_reset_code(self, message=None):
         if self.entries > 3:
@@ -347,7 +366,7 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.handle_game_over()
 
     # moon landing - layer 9
-    @layer_intent(IntentBuilder("LandApollo11Intent"). \
+    @layer_intent(IntentBuilder("LandApollo11Intent").
                   require("landKeyword"),
                   layer_name="moon")
     @enables_layer(layer_name="landing")
@@ -355,7 +374,7 @@ class Apollo11GameSkill(ConversationalGameSkill):
     def handle_land(self, message=None):
         self.speak_dialog("moon_land", expect_response=True)
 
-    @layer_intent(IntentBuilder("OrbitApollo11Intent"). \
+    @layer_intent(IntentBuilder("OrbitApollo11Intent").
                   require("orbitKeyword"),
                   layer_name="moon")
     @enables_layer(layer_name="orbit")
@@ -364,7 +383,7 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("moon_stay", expect_response=True)
 
     # stay on ship - layer 10
-    @layer_intent(IntentBuilder("ColinYesApollo11Intent"). \
+    @layer_intent(IntentBuilder("ColinYesApollo11Intent").
                   require("yesKeyword"),
                   layer_name="orbit")
     def handle_orbit_yes(self):
@@ -372,7 +391,7 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("colin_yes")
         self.next_question()
 
-    @layer_intent(IntentBuilder("ColinNoApollo11Intent"). \
+    @layer_intent(IntentBuilder("ColinNoApollo11Intent").
                   require("noKeyword"),
                   layer_name="orbit")
     def handle_orbit_no(self):
@@ -394,7 +413,7 @@ class Apollo11GameSkill(ConversationalGameSkill):
                        expect_response=True)
 
     # land on moon - layer 11
-    @layer_intent(IntentBuilder("AbortLandingApollo11Intent"). \
+    @layer_intent(IntentBuilder("AbortLandingApollo11Intent").
                   require("abortKeyword"),
                   layer_name="landing")
     @disables_layer(layer_name="landing")
@@ -402,7 +421,7 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.speak_dialog("moon_land_abort", expect_response=True)
         self.handle_game_over()
 
-    @layer_intent(IntentBuilder("IgnoreLandingApollo11Intent"). \
+    @layer_intent(IntentBuilder("IgnoreLandingApollo11Intent").
                   require("ignoreKeyword"),
                   layer_name="landing")
     @enables_layer(layer_name="pencil")
