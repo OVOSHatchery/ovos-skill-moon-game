@@ -1,0 +1,589 @@
+{
+    "already_equipped.dialog": [
+        "You already have {item} equipped.",
+        "You're already using {item}.",
+        "You’re already wearing {item}.",
+        "You’ve already put on {item}.",
+        "you already equipped {item}",
+        "{item} is already equipped.",
+        "{item} is already in use.",
+        "{item} is currently equipped."
+    ],
+    "bad.code.dialog": [
+        "It’s clear this role isn’t a good match for you.",
+        "It’s evident you’re not equipped for this role.",
+        "It’s obvious you’re not suited for this role.",
+        "This job doesn’t appear to align with your abilities.",
+        "You are obviously unfit for this job",
+        "You don’t seem well-suited for this job.",
+        "You’re clearly unfit for this job.",
+        "You’re not cut out for this job.",
+        "You’re not the right fit for this job."
+    ],
+    "boarding.dialog": [
+        "As a member of the Moon mission, you ascend to board the Saturn V rocket. As you approach the entrance, an odd detail on the launch door stands out to you. Option 1, Inspect the anomaly. Option 2, Overlook it.",
+        "As an astronaut heading to the Moon, you begin boarding the Saturn V rocket. While making your way to the rocket, you notice something strange about the launch door. Option 1, Examine the oddity. Option 2, Ignore it.",
+        "As one of the Moon-bound astronauts, you step aboard the Saturn V rocket. While walking toward the entrance, you spot something unusual about the launch door. Option 1, Investigate the unusual feature. Option 2, Pay it no attention.",
+        "As one of the astronauts going to the Moon, you start boarding the Saturn V rocket. As you are walking onto the rocket, you notice something peculiar about the launch door. Option 1, Examine the pecularity. Option 2, Ignore it.",
+        "As part of the mission to the Moon, you proceed to board the Saturn V rocket. On your way inside, something about the launch door catches your attention. Option 1, Take a closer look. Option 2, Dismiss it.",
+        "Preparing for your journey to the Moon, you board the Saturn V rocket. On your way to the entrance, you notice an unusual feature on the launch door. Option 1, Investigate the strangeness. Option 2, Ignore it."
+    ],
+    "boarding_dead.dialog": [
+        "As soon as you board the ship, it detonates without warning.",
+        "As you enter the ship, it suddenly blows apart in a catastrophic blast.",
+        "Just as you board the ship, it bursts into flames and explodes.",
+        "No sooner do you board the ship than it is destroyed in an explosion.",
+        "The moment you set foot on the ship, it blows up.",
+        "You barely step onto the ship before it violently explodes.",
+        "You board the ship, only for it to blow up immediately.",
+        "You climb aboard the ship, only for it to erupt in a fiery explosion.",
+        "You enter the ship, and in an instant, it’s engulfed in an explosion.",
+        "You step onto the ship, and it explodes instantly."
+    ],
+    "boarding_fail.dialog": [
+        "Boarding the ship requires wearing the full suit.",
+        "The full suit is required to board the ship.",
+        "The ship can’t be boarded without the full suit.",
+        "Without the full suit, boarding the ship isn’t possible.",
+        "You can't board the ship without the full suit.",
+        "You must have the full suit to board the ship.",
+        "You need the full suit to get on the ship.",
+        "You won’t be allowed on the ship without the full suit."
+    ],
+    "briefing.dialog": [
+        "After driving to the briefing center and parking, you enter the esteemed building, goosebumps forming along your neck. You find the briefing room and open the doors... \"Welcome!\" greets a voice.",
+        "You drive to the briefing center and park. As you walk into the prestigious building, a chill runs down your spine. You locate the briefing room and open the doors... \"Welcome!\" echoes a voice.",
+        "You drive to the briefing center and park. You walk into the esteemed building and goosebumps go down your neck. You find the briefing room and open the doors...Welcome! yells out a voice.",
+        "You drive to the briefing center, park, and step into the impressive building. Goosebumps rise on your neck as you walk through. You open the door to the briefing room... \"Welcome!\" shouts a voice.",
+        "You park at the briefing center and make your way into the grand building. A shiver runs down your neck as you step inside. You find the briefing room and open the door... \"Welcome!\" calls out a voice."
+    ],
+    "briefing_end.dialog": [
+        "\"All right boys, suit up!\" Gene yells.",
+        "\"All right, boys, suit up!\" Gene shouts.",
+        "\"All right, team, gear up!\" Gene yells.",
+        "\"Alright boys, time to gear up!\" Gene yells.",
+        "\"Get ready, boys, suit up!\" Gene shouts.",
+        "\"Let’s suit up, boys!\" Gene calls out.",
+        "\"Suit up, boys!\" Gene yells.",
+        "\"Suit up, everyone!\" Gene commands.",
+        "\"Time to suit up, boys!\" Gene announces."
+    ],
+    "briefing_harsh.dialog": [
+        "I can tell you had a hard night. I don’t blame you. He responds.",
+        "It looks like you had a rough one last night. No blame from me. He answers.",
+        "It seems like you had a difficult night. I don’t fault you. He responds.",
+        "Sounds like you had a rough night. I can't blame you. He answers.",
+        "You look like you had a rough night. I’m not blaming you. He says.",
+        "You must be exhausted from last night. I can’t blame you. He replies.",
+        "You must have had a rough night. I don't blame you. He responds",
+        "You must have had a tough night. I don't hold it against you. He replies.",
+        "You seem like you had a hard night. I understand. He responds."
+    ],
+    "briefing_lets_do_this.dialog": [
+        "Each one responds with a resounding \"hooah!\"",
+        "Everyone echoes \"hooah!\" in unison.",
+        "Everyone responds by shouting \"hooah!\"",
+        "Everyone responds with a loud \"hooah!\"",
+        "The response from everyone is a unified \"hooah!\"",
+        "The whole group responds with a chorus of \"hooah!\"",
+        "They all cry out \"hooah!\" together.",
+        "They all shout \"hooah!\" in response."
+    ],
+    "briefing_other.dialog": [
+        "Aren't you a strange duck?",
+        "You sure are a peculiar one, aren't you?",
+        "You're a bit of an odd one, aren’t you?",
+        "You're a quirky individual, aren’t you?",
+        "You're a strange one, aren't you?",
+        "You're an odd duck, aren't you?",
+        "You're certainly a unique one, aren't you?",
+        "You're quite the oddball, aren't you?",
+        "You’re an interesting character, aren't you?"
+    ],
+    "briefing_percentage.dialog": [
+        "\"He answered with a grim tone, stating that Margaret Hamilton had calculated it to be about 25%.\"",
+        "\"He grimly responded that Margaret Hamilton had calculated it to be around 25%.\"",
+        "\"He responded darkly, noting that Margaret Hamilton had estimated it to be around 25%.\"",
+        "\"He responded, his voice grim, saying that Margaret Hamilton's calculation was around 25%.\"",
+        "\"He said, his tone grim, 'Margaret Hamilton calculated it to be around 25%.'\"",
+        "\"His response was grim: 'Margaret Hamilton calculated it to be around 25%.'\"",
+        "\"Margaret Hamilton calculated it to be around 25%,\" he replied solemnly.",
+        "\"With a grim expression, he replied, 'Margaret Hamilton calculated it to be about 25%.'\"",
+        "Margaret Hamilton's calculated it to be around 25%.' He responded grimly."
+    ],
+    "briefing_question.dialog": [
+        "Do you answer with warmth, severity, or indifference?",
+        "Do you reply gently, sharply, or not at all?",
+        "Do you respond warmly, harshly or not at all?",
+        "Do you respond with warmth, harshness, or remain silent?",
+        "How do you respond—affectionately, brusquely, or not at all?",
+        "How do you respond—kindly, sternly, or with no reply?",
+        "Will you respond warmly, harshly, or stay silent?",
+        "Will your answer be warm, cold, or non-existent?",
+        "Will your response be warm, harsh, or absent?"
+    ],
+    "briefing_question2.dialog": [
+        "Any questions or comments? Option 1: Gene, what's our survival probability? Option 2: That speech was disastrous. Option 3: Let’s go!",
+        "Any questions or comments? Option 1: How's our survival percentage, Gene? Option 2: That speech was dreadful. Option 3: Let's get moving.",
+        "Any questions or comments? Option 1: What's our chance of survival, Gene? Option 2: That was a horrible speech. Option 3: Let's get started.",
+        "Any questions or comments? Option 1: What's our survival rate, Gene? Option 2: That speech was awful. Option 3: Let's get to work.",
+        "Any questions or comments? option 1, What's our survival percentage, Gene? option 2,  That was a terrible speech. option 3, Let's do this."
+    ],
+    "briefing_silence.dialog": [
+        "A person of few words. Got it.",
+        "A quiet one. Understood.",
+        "A quiet person, I see. Got it.",
+        "A reserved one. Got it.",
+        "A silent type, huh? Got it.",
+        "A silent type. Got it.",
+        "I see, you're the silent type. Got it.",
+        "So you're the silent type. Understood.",
+        "You're a silent type. Got it."
+    ],
+    "briefing_speech.dialog": [
+        "Alright everyone, Flight Director Gene Kranz here, good to meet you. I've called you in for a crucial mission. We're going to the moon, and you four are leading the charge. There may be challenges, but at Mission Control, we'll do all we can to prevent them. Good luck to all.",
+        "Alright everyone, Flight Director Gene Kranz speaking, great to meet you. The reason I’ve called you here is for an important mission. We’re headed to the moon, and you four are at the forefront. Things could go wrong, but here at Mission Control, we’ll do everything to keep that from happening. To finish, good luck to everyone.",
+        "Alright everyone, I'm Flight Director Gene Kranz, a pleasure to meet you. The reason you're here is for an essential mission. We're going to the moon, and you four are the spearhead. Things may go awry, but at Mission Control, we will do everything in our power to prevent that. I’ll end by saying, good luck to all.",
+        "Alright everyone, I'm Flight Director Gene Kranz, nice to meet you. I've called you all here because we have an import mission. We are going to the moon, and you four are the tip of the spear. Things may go wrong, but here at Mission Control we will do everything in our power to make sure that doesn't happen. I will close with, good luck to everyone.",
+        "Alright everyone, I'm Flight Director Gene Kranz, nice to meet you. I've gathered you here for an important mission. We're heading to the moon, and you four are at the forefront. Things might go wrong, but here at Mission Control, we will do everything we can to prevent that. To close, good luck to everyone."
+    ],
+    "briefing_terrible.dialog": [
+        "Thank you. I've heard a lot about you. He grins playfully.",
+        "Thank you. Your reputation certainly precedes you. He gives a cheeky smile.",
+        "Thanks. Your reputation has certainly made its mark. He smiles with a mischievous look.",
+        "Thanks. Your reputation speaks for itself. He smiles teasingly.",
+        "Well, thank you. I've heard great things about you. He smiles with a cheeky grin.",
+        "Well, thank you. I’ve heard much about you. He grins cheekily.",
+        "Well, thank you. Your reputation goes before you. He smiles mischievously.",
+        "Well, thank you. Your reputation is well known. He flashes a cheeky grin.",
+        "Well, thank you. Your reputation precedes you. He smiles cheekishly."
+    ],
+    "briefing_warm.dialog": [
+        "I always believed you were a nice guy! he says.",
+        "I always knew you were a good guy! he says.",
+        "I always knew you were a nice guy! he says",
+        "I always knew you were one of the good ones! he says.",
+        "I always thought you were a great guy! he says.",
+        "I always thought you were a nice guy! he says.",
+        "I had a feeling you were a nice guy! he says.",
+        "I had a hunch you were a nice guy! he says.",
+        "I knew from the start you were a nice guy! he says."
+    ],
+    "code.reset.dialog": [
+        "The launch code has been cleared.",
+        "The launch code has been reinitialized.",
+        "The launch code has been reset.",
+        "The launch code has been restored.",
+        "The launch code was refreshed.",
+        "The launch code was reset to default.",
+        "The launch code was reset to zero.",
+        "The launch code was wiped.",
+        "launch code was reset"
+    ],
+    "code_dead.dialog": [
+        "ERROR: INCORRECT LAUNCH CODES. Initiating self-destruct sequence.",
+        "ERROR: INCORRECT LAUNCH CODES. Self-destruct in progress.",
+        "ERROR: INVALID LAUNCH CODES. Self-destruct sequence initiated immediately.",
+        "ERROR: INVALID LAUNCH CODES. Self-destruct sequence initiated.",
+        "ERROR: LAUNCH CODES INCORRECT. Commencing self-destruct sequence.",
+        "ERROR: LAUNCH CODES INVALID. Initiating self-destruct.",
+        "ERROR: LAUNCH CODES MISMATCH. Self-destruct sequence activated.",
+        "ERROR: WRONG LAUNCH CODES. Activating self-destruct sequence.",
+        "ERROR: WRONG LAUNCH CODES. Self-destruct sequence commencing."
+    ],
+    "code_enter_number.dialog": [
+        "The input was {number}.",
+        "The number you entered is {number}.",
+        "You entered {number}.",
+        "You have entered {number}.",
+        "You typed in {number}.",
+        "You’ve entered {number}.",
+        "{number} is the value you entered.",
+        "{number} is what you entered."
+    ],
+    "code_invalid.dialog": [
+        "Hey, the code must be a number.",
+        "Numbers only, please.",
+        "Only numbers are allowed.",
+        "Only numeric values are accepted.",
+        "Please enter a number.",
+        "The code must be a number.",
+        "You have to enter a number.",
+        "You need to enter a number.",
+        "only numbers are allowed",
+        "you must enter a number"
+    ],
+    "code_one_at_time.dialog": [
+        "Enter 1 digit only.",
+        "Only 1 digit, please.",
+        "Only one digit is allowed.",
+        "Please enter a single digit.",
+        "Please enter just 1 digit.",
+        "Please input one digit at a time.",
+        "You can only enter 1 digit.",
+        "You must enter 1 digit at a time.",
+        "enter 1 digit only",
+        "only 1 digit please",
+        "you must enter 1 digit at a time"
+    ],
+    "codes.dialog": [
+        "A few hours later, you board the ship and secure yourself in. Aldrin says, \"The launch codes are 90210, enter each digit one by one.\"",
+        "After a few hours, you board the ship again and strap in. Aldrin says, \"The launch codes are 90210, enter them one digit at a time.\"",
+        "After a few hours, you board the ship and buckle in. Aldrin says, \"The launch codes are 90210, enter them one digit at a time.\"",
+        "After a few hours, you board the ship once more and strap in. Aldrin says. the launch codes are 90210, punch them in one at a time.",
+        "After several hours, you board the ship once more and strap in. Aldrin says, \"The launch codes are 90210, input them one digit at a time.\""
+    ],
+    "collin_calm.dialog": [
+        "I appreciate it, you’ve eased my nerves. Let’s bring those boys back, he says.",
+        "I appreciate that, you’ve calmed my nerves. Let’s get those boys home, he says.",
+        "I’m grateful, you’ve calmed me down. Let’s bring those boys back safely, he says.",
+        "I’m relieved, thanks for calming me down. Let’s get those boys back, he says.",
+        "Thanks you've calmed my nerves, let's get those boys home. He says.",
+        "Thanks, you’ve calmed my nerves. Let’s get those boys home, he says.",
+        "Thanks, you’ve eased my tension. Let’s get those boys home, he says.",
+        "Thanks, you’ve helped calm my nerves. Let’s bring those boys home, he says.",
+        "Thanks, you’ve settled my nerves. Let’s get those boys home, he says."
+    ],
+    "collin_dead.dialog": [
+        "\"You're right, there’s no reason to live!\" Collins activates the airlock, and you both are sucked into space.",
+        "\"You're right, there’s no reason to live!\" Collins hits the airlock button, and you both are sucked out into space.",
+        "\"You're right, there’s no reason to live!\" Collins hits the airlock switch, and both of you are pulled into space.",
+        "\"You're right, there’s no reason to live!\" Collins opens the airlock, and you both are dragged into space.",
+        "\"You're right, there’s no reason to live!\" Collins opens the airlock, and you both are sucked into the cold vacuum of space.",
+        "\"You're right, there’s no reason to live!\" Collins slams the airlock, and you both get pulled into space.",
+        "\"You're right, there’s no reason to live!\" Collins triggers the airlock, and you both are sucked into space.",
+        "You're right, there is no reason to live!' Collins hits the airlock and you both are sucked into space.",
+        "You're right, there’s no reason to live!\" Collins hits the airlock, and you both are sucked into space."
+    ],
+    "collin_no.dialog": [
+        "Oh no! It’s over!",
+        "Oh no! There’s no way out!",
+        "Oh no! This is the end!",
+        "Oh no! We're doomed!",
+        "Oh no! We’re finished!",
+        "We're doomed! Oh no!",
+        "We’re doomed! This can’t be happening!",
+        "We’re doomed! We’re done for!"
+    ],
+    "collin_other.dialog": [
+        "I don't know what you're talking about!",
+        "I don’t know what you mean!",
+        "I don’t understand what you’re saying!",
+        "I have no clue what you're talking about!",
+        "I have no idea what you're talking about!",
+        "I’m confused, I don’t know what you’re talking about!",
+        "I’m not sure what you mean by that!",
+        "I’m not sure what you’re referring to!",
+        "What are you talking about? I don’t get it!"
+    ],
+    "collin_yes.dialog": [
+        "How comforting!",
+        "I feel better already!",
+        "I’m glad to hear that!",
+        "That's comforting!",
+        "That’s a relief!",
+        "That’s really comforting!",
+        "That’s reassuring!",
+        "That’s so reassuring!",
+        "Well, that’s comforting!"
+    ],
+    "equip.dialog": [
+        "You now have {item} equipped.",
+        "You’re all set with {item}.",
+        "You’ve equipped {item}.",
+        "You’ve successfully equipped {item}.",
+        "{item} has been equipped.",
+        "{item} is equipped.",
+        "{item} is now equipped.",
+        "{item} is now in place."
+    ],
+    "evacuate_dead.dialog": [
+        "Frozen by your own inaction, the ship stays intact, and you find yourself in orbit, on your way to the moon with no help.",
+        "Frozen in place, the ship holds firm, and you’re in orbit, heading toward the moon without any assistance.",
+        "Unable to move, the ship holds its course, and you’re now in orbit, heading to the moon without any support.",
+        "You freeze in place, paralyzed by inaction. The ship holds steady, and you’re now in orbit, heading to the moon without any support.",
+        "You freeze with your inaction, the ship holds and you are now in orbit,on your way to the moon without support.",
+        "You freeze, motionless. The ship stays steady, and you’re now in orbit, on a lonely journey to the moon.",
+        "You freeze, unable to act. The ship remains steady, and you’re now in orbit, journeying to the moon alone.",
+        "You remain still, unable to act. The ship remains stable, and you’re now in orbit, making your way to the moon alone.",
+        "You’re frozen by indecision, but the ship holds steady, and you’re in orbit, bound for the moon without any backup."
+    ],
+    "evacuate_gameover.dialog": [
+        "As your ejection pod deploys, the intense g-forces knock you out. You regain consciousness in a hospital, with no memory of what came before.",
+        "The ejection pod deploys, and the force of the g-forces knocks you out. You come to in a hospital, with no memory of the past events.",
+        "The ejection pod deploys, the g-forces overwhelm you, and you lose consciousness. You wake up in a hospital, with no recollection of anything.",
+        "The ejection pod engages, and the g-forces cause you to black out. You awaken in a hospital, with no memory of what occurred.",
+        "The ejection pod fires, the g-forces hit hard, and you black out. You wake up in a hospital, with no memory of the events leading up to it.",
+        "Your ejection pod activates, and the crushing g-forces send you into darkness. You wake up in a hospital, unable to remember a thing.",
+        "Your ejection pod activates, the g-forces slam you, and you black out. When you wake up, you're in a hospital with no memory of what happened.",
+        "Your ejection pod deploys, sending you into a blackout from the g-forces. You come to in a hospital, with no memory of anything.",
+        "Your ejection pod deploys, you feel the g-forces and black out. You wake up in a hospital and have no memory of anything."
+    ],
+    "examine.dialog": [
+        "An engineer approaches and inspects the hull. \"It’s a minor tear. I’ll have the team take care of it, but it’ll be a couple of hours,\" he says.",
+        "An engineer approaches and inspects the issue. \"Looks like a minor tear in the hull. I’ll have the team fix it, but it’ll take a couple of hours,\" he says.",
+        "An engineer arrives and inspects the damage. \"There's a minor tear in the hull. I’ll have the team take care of it, but it'll be a couple of hours,\" he says.",
+        "An engineer arrives and takes a look at the issue. \"There’s a small tear in the hull. I’ll have the team fix it, but it’ll take a couple of hours,\" he says.",
+        "An engineer comes over and examines the problem. Looks like a minor tear in the hull, I'll get the boys to get it fixed but it will be a couple hours. he says.",
+        "An engineer comes over to assess the damage. \"There’s a minor tear in the hull. I’ll get the crew to fix it, but it’ll take a couple of hours,\" he says.",
+        "An engineer comes over to examine the problem. \"It’s a small tear in the hull. I'll have the crew fix it, but it’ll take a couple of hours,\" he says.",
+        "An engineer steps in and checks the damage. \"It’s just a minor tear in the hull. I’ll get the guys to repair it, but it’ll take a couple of hours,\" he says.",
+        "An engineer walks over to assess the situation. \"It’s just a small tear in the hull. I’ll get the crew to handle it, but it’ll take a couple of hours,\" he says."
+    ],
+    "go_home.dialog": [
+        "After a flawless journey, the lander returns from the moon, attaching to the ship and making a perfect entry into Earth's orbit. You touch down in the ocean and are promptly picked up by U.S. forces. Several awards are bestowed upon you for your brave mission to the moon! Fantastic work and congratulations!",
+        "After successfully returning from the moon, the lander docks with the ship and re-enters Earth's orbit flawlessly. You touch down in the ocean and are quickly retrieved by U.S. forces. You are presented with several prestigious awards for your daring mission to the moon! Congratulations on your outstanding achievement!",
+        "The lander makes a safe return from the moon and attaches to the ship, entering Earth's orbit without a hitch. You touch down in the ocean and are immediately picked up by U.S. forces. You receive several awards in recognition of your successful mission to the moon! Well done and congratulations!",
+        "The lander returns safely from the moon and attaches to the ship, making a flawless entry into Earth's orbit. You land in the ocean and are swiftly picked up by U.S. forces. You receive multiple awards for your daring moon mission! Excellent job and congratulations!",
+        "The lander returns safely from the moon and reattaches to the ship. The journey back to Earth is flawless, entering Earth's orbit smoothly. You touch down in the ocean, where U.S. forces quickly pick you up. You are honored with several awards for your courageous mission to the moon! Excellent work and congratulations!",
+        "The lander safely returns from the moon to the ship. It attaches to the ship and makes it safely back to earth, entering earth's orbit flawlessly. You touch down in the ocean, only to have the U.S. forces pick you up. You receive several awards for your daring mission to the moon! Great job and congratulations!",
+        "The lander safely returns from the moon to the ship. It docks seamlessly with the vessel and makes a flawless return to Earth, entering Earth's orbit without a hitch. You touch down in the ocean, where U.S. forces swiftly pick you up. You are awarded several honors for your daring moon mission! Great job and congratulations!",
+        "The lander safely returns from the moon, docking with the ship and entering Earth's orbit without a problem. You touch down in the ocean and are quickly retrieved by U.S. forces. In recognition of your heroic moon mission, you are awarded several honors! Great work and congratulations!",
+        "The lander successfully makes its way back from the moon, attaching to the ship and returning to Earth. The entry into Earth's orbit is flawless, and you touch down in the ocean, where U.S. forces are ready to pick you up. You are presented with multiple awards for your heroic mission to the moon! Outstanding job and congratulations!"
+    ],
+    "guard.dialog": [
+        "Good afternoon, sir. Could you please present your ID?",
+        "Good day, sir. Kindly provide your ID.",
+        "Greetings, sir. May I have your ID, please?",
+        "Hello, sir, please present your ID.",
+        "Hello, sir. Could you please present your ID?",
+        "Hello, sir. Please provide your ID for verification.",
+        "Hello, sir. Please show your ID.",
+        "Hello, sir. Would you mind presenting your ID?",
+        "Hi, sir. Please show your identification."
+    ],
+    "guard_dead.dialog": [
+        "\"Get your hands on the ground!\" he yells loudly. You’re arrested.",
+        "\"Get your hands on the ground, now!\" he shouts. You’ve been arrested.",
+        "\"Hands on the ground, now!\" he screams. You’ve been arrested.",
+        "\"Put your hands on the ground!\" he shouts. You are now under arrest.",
+        "\"Sir, get your hands on the ground!\" he screams. You are now under arrest.",
+        "\"Sir, hands down now!\" he screams. You are immediately arrested.",
+        "\"Sir, hands on the ground!\" he orders, shouting. You are now under arrest.",
+        "\"Sir, put your hands on the ground!\" he yells. You are now in custody."
+    ],
+    "guard_next.dialog": [
+        "Go to the briefing center, please.",
+        "Head to the briefing center, please.",
+        "Kindly make your way to the briefing center.",
+        "Make your way to the briefing center, please.",
+        "Please go to the briefing center.",
+        "Please head over to the briefing center.",
+        "Please head to the briefing center.",
+        "Please proceed to the briefing center.",
+        "Proceed to the briefing center at once."
+    ],
+    "guard_no.dialog": [
+        "\"Please present your ID, sir, I won’t ask again,\" the guard says, his tone stern.",
+        "\"Sir, I won’t ask again, please present your ID,\" the guard demands firmly.",
+        "\"Sir, I won’t ask again, present your ID,\" the guard says in a commanding voice.",
+        "\"Sir, I won’t ask you again, please present your ID,\" the guard says sternly.",
+        "\"Sir, I won’t ask you again, please show your ID,\" the guard says firmly.",
+        "The guard says sternly, \"Sir, I won’t ask you again, please present your ID.\"",
+        "The guard speaks sternly, \"Sir, present your ID now. I won’t ask again.\"",
+        "The guard, with a stern tone, says, \"Sir, please present your ID. I won’t ask again.\""
+    ],
+    "guard_yes.dialog": [
+        "\"Hello! Welcome to the Kennedy Space Center,\" the guard says with excitement. \"Today is the day we make history against the Russian communists. You, Neil Armstrong, Michael Collins, and Edwin Aldrin are going to the moon!\"",
+        "\"Welcome to the Kennedy Space Center!\" the guard says with excitement. \"Today, we make history against the Russian communists. Today, Neil Armstrong, Michael Collins, Edwin Aldrin, and you are headed to the moon!\"",
+        "Excitedly, the guard exclaims, \"Hello! Welcome to the Kennedy Space Center. Today is the day we make history against the Russian communists. Today, Neil Armstrong, Michael Collins, Edwin Aldrin, and you will set foot on the moon!\"",
+        "The guard beams with excitement, \"Hello! Welcome to the Kennedy Space Center. Today is the day we make history against the Russian communists. Neil Armstrong, Michael Collins, Edwin Aldrin, and you are going to the moon!\"",
+        "The guard says excitedly, \"Hello! Welcome to the Kennedy Space Center. Today is the day we make history against the Russian communists. Today, Neil Armstrong, Michael Collins, Edwin Aldrin, and you are going to the moon.\"",
+        "The guard says with enthusiasm, \"Hello! Welcome to the Kennedy Space Center. Today is the day we make history against the Russian communists. Today, you, Neil Armstrong, Michael Collins, and Edwin Aldrin are going to the moon!\"",
+        "With enthusiasm, the guard greets you, \"Hello! Welcome to the Kennedy Space Center. Today, we make history against the Russian communists. Today, you, Neil Armstrong, Michael Collins, and Edwin Aldrin will go to the moon!\"",
+        "With excitement, the guard greets you, \"Hello! Welcome to the Kennedy Space Center. Today, we make history against the Russian communists. Today, Neil Armstrong, Michael Collins, Edwin Aldrin, and you are going to the moon!\""
+    ],
+    "guard_yes_alternate.dialog": [
+        "\"Thank you,\" he says in a reserved tone. \"We are pleased to have you on board for the moon launch.\"",
+        "\"Thank you. It’s an honor to have you on board for today’s moon launch,\" he says with a reserved tone.",
+        "\"Thank you. We are glad to have you on board today for the moon launch,\" he says reservedly.",
+        "He says quietly, \"Thank you. We're glad to have you on board today for the moon launch.\"",
+        "He says solemnly, \"Thank you. We’re glad you’re here for the moon launch today.\"",
+        "He says thoughtfully, \"Thank you. We're glad you're here for the moon launch today.\"",
+        "With a calm, reserved tone, he says, \"Thank you. We are glad to have you on board for today’s moon launch.\"",
+        "With a reserved voice, he says, \"Thank you. We are pleased to have you on board for the moon launch today.\""
+    ],
+    "ignore.dialog": [
+        "After boarding the rocket and securing yourself, the ignition starts. Then, a gauge flashes red. Mission Control advises evacuation over the microphone. Do you evacuate or remain on the ship?",
+        "As you board the rocket and strap in, the ignition begins. Out of nowhere, a gauge flashes red. Mission Control immediately contacts you and recommends evacuation. Will you evacuate or stay aboard?",
+        "As you board the rocket and strap in, the ignition starts. Then, one of your gauges flashes red. Mission Control reaches out over the microphone, urging you to evacuate the spacecraft. Will you evacuate or stay?",
+        "You board the rocket, strap in and the ignition starts up. Suddenly, one of your gauges flashes red. Mission control contacts you over your microphone and recommends you evacuate the spacecraft. Do you evacuate or stay on the ship?",
+        "You board the rocket, strap in, and the ignition begins. Suddenly, one of your gauges flashes red. Mission Control contacts you over your microphone and advises you to evacuate the spacecraft. Do you choose to evacuate or stay on the ship?",
+        "You board the rocket, strap in, and the ignition powers up. Suddenly, a gauge flashes red. Mission Control contacts you through your mic, recommending evacuation. Do you leave the spacecraft or stay?",
+        "You board the rocket, strap in, and the ignition roars to life. Suddenly, one of the gauges turns red. Mission Control calls through your microphone, suggesting you evacuate. Do you stay or leave the ship?",
+        "You board the rocket, strap in, and the ignition starts. Suddenly, a gauge flashes red. Mission Control contacts you over the mic, advising evacuation. Do you choose to leave or stay on the spacecraft?",
+        "You strap in as the rocket's ignition starts up. Suddenly, a gauge flashes red. Mission Control urgently advises you to evacuate. Do you stay on board or exit the spacecraft?"
+    ],
+    "invalid.command.dialog": [
+        "Concentrate on the job at hand.",
+        "Concentrate on what you're doing.",
+        "Focus on your task.",
+        "Focus solely on your work.",
+        "Keep your attention on the task at hand.",
+        "Keep your mind on the task.",
+        "Stay focused on your task.",
+        "Stay on track with your task.",
+        "try something else"
+    ],
+    "launch.dialog": [
+        "Armstrong confirmed the launch sequence and said, \"Here we go, gentlemen!\"",
+        "Launch sequence confirmed. Armstrong exclaimed, \"Here we go, gentlemen!\"",
+        "Launch sequence confirmed. Here we go, gentleman! Said Armstrong.",
+        "Launch sequence confirmed. Here we go, gentlemen! Armstrong said.",
+        "Launch sequence ready. Here we go, gentlemen! Armstrong remarked.",
+        "The launch sequence is confirmed. Here we go, gentlemen! Armstrong stated.",
+        "The launch sequence is set. Armstrong called out, \"Here we go, gentlemen!\"",
+        "With the confirmation of the launch sequence, Armstrong said, \"Here we go, gentlemen!\"",
+        "With the launch sequence confirmed, Armstrong declared, \"Here we go, gentlemen!\""
+    ],
+    "moon_land.dialog": [
+        "Aldrin, Armstrong and you board the lander vehicle and launch to the moon. As you are about to land, the 1201 and 1202 alarms start going off inside the lander. Armstrong and Aldrin are torn and they look to you to decide. Do you abort the mission and go back or ignore the alarms?",
+        "Aldrin, Armstrong, and you are aboard the lander, en route to the moon. As landing approaches, the 1201 and 1202 alarms start blaring. Armstrong and Aldrin are torn, glancing at you for the final decision. Do you abort the mission or proceed despite the alarms?",
+        "Aldrin, Armstrong, and you are in the lander, headed for the moon. The 1201 and 1202 alarms start going off as you prepare to land. Armstrong and Aldrin look to you for a decision. Do you turn back or proceed ignoring the alarms?",
+        "Aldrin, Armstrong, and you board the lander and begin your descent to the moon. Just before landing, the 1201 and 1202 alarms start sounding off. Armstrong and Aldrin look at you, awaiting your call. Do you turn back and abort the mission or continue despite the alarms?",
+        "Aldrin, Armstrong, and you board the lander vehicle, launching towards the moon. As you're about to land, the 1201 and 1202 alarms begin blaring inside the lander. Armstrong and Aldrin are unsure, looking to you for a decision. Do you abort the mission and return or ignore the alarms?",
+        "Aldrin, Armstrong, and you board the lander, launching toward the moon. As you near the surface, the 1201 and 1202 alarms begin ringing. Armstrong and Aldrin look to you for a decision. Do you turn back or press on, ignoring the alarms?",
+        "As Aldrin, Armstrong, and you descend toward the moon, the 1201 and 1202 alarms begin ringing. Armstrong and Aldrin are uncertain and look to you for direction. Do you abort the mission or continue despite the alarms?",
+        "With Aldrin, Armstrong, and yourself aboard, the lander begins its moon landing sequence. Suddenly, the 1201 and 1202 alarms go off. Armstrong and Aldrin exchange worried glances and look to you for guidance. Will you abort the mission or push forward, ignoring the alarms?",
+        "With the lander vehicle carrying Aldrin, Armstrong, and you, the descent to the moon begins. Suddenly, the 1201 and 1202 alarms go off. Armstrong and Aldrin look to you for guidance. Will you abort or disregard the warnings and continue?"
+    ],
+    "moon_land_abort.dialog": [
+        "By accident, you press the wrong button and crash into the moon at 7152 feet per second.",
+        "In a moment of confusion, you hit the wrong button, slamming into the moon at 7152 feet per second.",
+        "Inadvertently, you hit the wrong button and crash into the moon at 7152 feet per second.",
+        "With a wrong button press, you crash into the moon at 7152 feet per second.",
+        "You accidentally hit the wrong button, and at 7152 feet per second, you collide with the moon.",
+        "You accidentally press the wrong button and crash into the moon at 7152 feet per second.",
+        "You accidently press the wrong button and hit the moon going 7152 feet per second.",
+        "You mistakenly press the wrong button and collide with the moon at a speed of 7152 feet per second.",
+        "You press the wrong button by mistake and impact the moon at a speed of 7152 feet per second."
+    ],
+    "moon_land_ignore.dialog": [
+        "You advise them to ignore the alarms. With Margaret Hamilton's code handling the situation, non-essential tasks are ignored, and the lander touches down softly on the moon. The rest is history.",
+        "You decide to ignore the alarms. Thanks to Margaret Hamilton's code, non-essential tasks are ignored, and the lander is smoothly guided to the moon. You land softly, and the rest is history.",
+        "You give the command to ignore the alarms. Thanks to Margaret Hamilton's code, unnecessary tasks are ignored, guiding the lander safely to the moon. You land without incident, and the rest is history.",
+        "You instruct them to disregard the alarms. Margaret Hamilton's code seamlessly ignores non-critical tasks, guiding the lander to a gentle touchdown on the moon. The rest is history.",
+        "You instruct them to ignore the alarms. With Margaret Hamilton's code prioritizing essential tasks, the lander reaches the moon safely and gently. The rest is history.",
+        "You tell Armstrong and Aldrin to ignore the alarms. Margaret Hamilton's code bypasses non-essential tasks and leads the lander to a smooth landing on the moon. The rest is history.",
+        "You tell them to disregard the alarms. Margaret Hamilton's code efficiently skips non-essential tasks and guides the lander to a smooth lunar landing. The rest is history.",
+        "You tell them to ignore the alarms. Margaret Hamilton's code automatically disregards non-essential tasks and safely guides the lander to the moon. You land gently on the surface, and the rest is history.",
+        "You tell them to ignore the alarms. Margaret Hamilton's code automatically ignores non-essential tasks and guides the lander to the moon. You land gently on the moon and the rest is history."
+    ],
+    "moon_landing.dialog": [
+        "As you orbit above the moon with your three colleagues, do you attempt a landing with the lander, or stay in orbit?",
+        "Now in orbit above the moon with your three teammates, do you try landing with the lander, or remain in orbit?",
+        "Orbiting above the moon with your three colleagues, do you take the risk and land, or stay in orbit?",
+        "Orbiting the moon with your three teammates, do you go for a landing, or remain in orbit?",
+        "With your three fellow astronauts in orbit above the moon, do you attempt a landing with the lander, or remain in orbit?",
+        "You and your three companions are now orbiting the moon. Will you try landing, or stay in orbit for now?",
+        "You and your three companions are orbiting above the moon. Will you try landing in the lander, or stay in orbit?",
+        "You are now orbiting above the moon with your three companions. Do you attempt to land on the moon with the lander vehicle, or stay in orbit?",
+        "You are now orbiting above the moon with your three compatriots. Do you try to land on the moon with the lander vehicle or stay in orbit?"
+    ],
+    "moon_launch.dialog": [
+        "After completing your exploration, the four of you return to the lander to take off. Armstrong accidentally breaks a lever. You notice a pencil nearby that could act as a makeshift lever. Do you push it into the lever slot? Yes or No?",
+        "After finishing the exploration, you all board the lander to leave. Armstrong accidentally breaks a lever. You notice a pencil that could serve as a makeshift lever. Do you push it into the lever slot? Yes or No?",
+        "After finishing your exploration, all three of you enter the lander to take off. Armstrong accidentally breaks a lever. You spot a pencil that might serve as a makeshift lever. Do you push it into the lever slot? Yes or No?",
+        "After finishing your exploration, all three of you go into the lander to take off. Armstrong accidently breaks a lever. You see a pencil that may act as a makeshift lever, do you push it into the lever slot Yes or No?",
+        "After your exploration, the four of you return to the lander for takeoff. Armstrong accidentally breaks a lever. You notice a pencil that might serve as a makeshift lever. Do you push it into the lever slot? Yes or No?",
+        "Having finished your exploration, you all board the lander to depart. Armstrong accidentally breaks a lever. You notice a pencil nearby that could act as a makeshift lever. Do you push it into the slot? Yes or No?",
+        "Once your exploration is done, all three of you get back into the lander for takeoff. Armstrong breaks a lever by accident. You see a pencil nearby that might work as a makeshift lever. Do you push it into the slot? Yes or No?",
+        "The exploration is complete, and all three of you head back into the lander for takeoff. Armstrong accidentally breaks a lever. You see a pencil that could be used as a makeshift lever. Do you push it into the lever slot? Yes or No?",
+        "You’ve finished your exploration and are heading back into the lander for takeoff. Armstrong breaks a lever by accident. You spot a pencil that could work as a makeshift lever. Do you push it into the lever slot? Yes or No?"
+    ],
+    "moon_stay.dialog": [
+        "As Collins and you stay in the main vehicle, monitoring the signal from Aldrin and Armstrong in orbit, you notice Collins’ nervousness and twitchy behavior. He begins asking you a series of yes or no questions.",
+        "Collins and you stay in the main vehicle to support Aldrin and Armstrong in orbit. As they head toward the moon, Collins starts to get nervous and twitchy, asking you a series of yes or no questions.",
+        "Collins and you stay in the main vehicle to support Aldrin and Armstrong in orbit. While the other jettison to the moon, you two have a chat while monitoring their signal. You notice Collins is nervous and twitchy. He starts asking you a series of yes or no questions.",
+        "Collins and you stay in the main vehicle to support Aldrin and Armstrong in orbit. While the others jettison to the moon, you two chat while monitoring their signal. You notice Collins is nervous and twitchy, asking you a series of yes or no questions.",
+        "Collins, staying with you in the main vehicle to support Aldrin and Armstrong in orbit, seems nervous and twitchy. He starts asking you a series of yes or no questions while you monitor their signal.",
+        "While supporting Aldrin and Armstrong in orbit, you and Collins are monitoring their signal. You notice Collins' nervous behavior, and he starts asking you a series of yes or no questions.",
+        "While you and Collins stay in the main vehicle to monitor Aldrin and Armstrong's signal in orbit, Collins starts asking you a series of nervous yes or no questions.",
+        "While you and Collins stay in the main vehicle to monitor Aldrin and Armstrong, Collins' nervousness grows. He starts asking you a series of yes or no questions, his anxiety apparent.",
+        "You and Collins remain in the main vehicle, supporting Aldrin and Armstrong in orbit. As they jettison to the moon, Collins becomes nervous and starts asking you a series of yes or no questions."
+    ],
+    "pencil_no.dialog": [
+        "Armstrong becomes increasingly despondent and blames both of you. In a fit of frustration, he attacks you, accidentally severing your oxygen supply.",
+        "Armstrong becomes increasingly despondent, and blames both of you. He attacks you, severing your oxygen accidently.",
+        "Armstrong's mood darkens as he blames both of you. In an outburst of frustration, he attacks, accidentally severing your oxygen line.",
+        "Armstrong, feeling despondent and blaming both of you, lashes out. In the struggle, he unintentionally severs your oxygen line.",
+        "As Armstrong grows more despondent and starts blaming both of you, he lashes out in anger, inadvertently severing your oxygen line.",
+        "As Armstrong's despondency grows, he turns his anger towards both of you. In his attack, he accidentally cuts off your oxygen supply.",
+        "Blaming both of you for the situation, Armstrong becomes increasingly despondent. His attack leads to an accidental severing of your oxygen supply.",
+        "Despondent and blaming both of you, Armstrong becomes hostile. During the struggle, he accidentally severs your oxygen supply.",
+        "Increasingly despondent, Armstrong blames both of you and becomes aggressive. In the chaos, he accidentally cuts off your oxygen supply."
+    ],
+    "pencil_yes.dialog": [
+        "You insert the pencil and pull down. The engines roar to life, and the lander ascends.",
+        "You jam the pencil into the slot and pull down. The engines roar to life, and the lander begins its ascent.",
+        "You push it in and pull down on the pencil. The engines roar to life and the lander takes off.",
+        "You push the pencil in and pull down on it. The engines roar to life, and the lander takes off.",
+        "You push the pencil in, pull down, and the engines roar to life as the lander lifts off.",
+        "You push the pencil into place and pull down on it. The engines roar, and the lander lifts off.",
+        "You push the pencil into place and pull down. The engines roar, and the lander launches.",
+        "You push the pencil into the lever slot and pull it down. The engines roar to life, and the lander takes off.",
+        "You slide the pencil in and pull down on it. The engines roar, and the lander starts to lift off."
+    ],
+    "present_id.dialog": [
+        "Are you going to present your ID?",
+        "Do you hand your ID to the guard?",
+        "Do you present your ID to the guard?",
+        "Do you present your id to the guard?",
+        "Do you want to present your ID?",
+        "Do you want to present your id?",
+        "Will you present your identification?",
+        "Will you present your identification?",
+        "Will you provide your identification?",
+        "Would you like to show your ID?",
+        "Would you present your identification to the guard?"
+    ],
+    "reach_gate.dialog": [
+        "Arriving at the gated compound in your car, you greet the guard.",
+        "You arrive at the gated compound in your car and greet the guard.",
+        "You drive up to the gate of the compound and greet the guard.",
+        "You drive up to the gated compound and greet the guard.",
+        "You pull into the gated compound and greet the guard.",
+        "You pull up to the compound gate and greet the guard.",
+        "You pull up to the gated compound in your car and greet the guard.",
+        "You pull up to the gated compound in your car and greet the guard.",
+        "You reach the gated compound, pull up in your car, and greet the guard."
+    ],
+    "speech.dialog": [
+        "\"Alright everyone, I'm Flight Director Gene Kranz, nice to meet you. I've called you all here because we have an important mission ahead. We're heading to the moon, and you four are the tip of the spear. Things might go wrong, but here at Mission Control, we'll do everything in our power to ensure that doesn't happen. I'll close with, good luck to everyone.\"",
+        "\"Alright, I'm Flight Director Gene Kranz. It's a pleasure to meet you all. I've gathered you here for a very important mission. We're heading to the moon, and you four are at the forefront. Things may go wrong, but here at Mission Control, we'll do everything we can to prevent that. Good luck to everyone.\"",
+        "\"Alright, I’m Flight Director Gene Kranz, pleased to meet you all. We’re facing an important mission – going to the moon, and you four are the tip of the spear. There may be hurdles, but at Mission Control, we will do everything we can to ensure a smooth journey. Good luck to everyone.\"",
+        "\"Alright, everyone, I'm Flight Director Gene Kranz, nice to meet you. The mission ahead is of great importance. We’re going to the moon, and you four are the spearhead of this effort. While things might go awry, rest assured that here at Mission Control, we’ll do all we can to ensure success. Good luck, everyone.\"",
+        "\"Alright, everyone, I’m Gene Kranz, your Flight Director. It’s great to meet you all. We’re about to embark on a critical mission to the moon, and you four are at the forefront. While things may go wrong, you can trust that Mission Control will do everything possible to prevent it. Best of luck to everyone.\"",
+        "\"Good to see you all, I’m Flight Director Gene Kranz. We have an important mission ahead – we're heading to the moon, and you four are at the cutting edge. There may be challenges, but Mission Control will do everything possible to minimize them. Wishing everyone the best of luck.\"",
+        "\"Hello everyone, I'm Gene Kranz, Flight Director. Nice to meet you all. We've gathered for a critical mission – we're going to the moon, and you four are leading the charge. Things could go wrong, but at Mission Control, we will do everything in our power to keep that from happening. Best of luck to everyone.\"",
+        "\"Hello, I’m Flight Director Gene Kranz, and it's a pleasure to meet you all. We're on an important mission – heading to the moon, with you four leading the way. Things could go wrong, but Mission Control will do everything to make sure they don't. Good luck to each and every one of you.\""
+    ],
+    "start.game.dialog": [
+        "Game started"
+    ],
+    "stay_dead.dialog": [
+        "After your colleagues deploy their escape pods, the ship somehow remains intact. You’re now in orbit, on course for the moon without any backup.",
+        "As your colleagues deploy their escape pods, the ship miraculously holds together. You're now in orbit, heading toward the moon without any support.",
+        "The escape pods are deployed by your colleagues, and miraculously, the ship holds together. You’re now in orbit, heading toward the moon alone.",
+        "The escape pods are deployed by your teammates, and somehow, the ship stays intact. You’re now in orbit, alone on your journey to the moon.",
+        "You colleagues deploy their escape pods. Miraculously, the ship holds and you are now in orbit, on your way to the moon without support.",
+        "Your colleagues deploy their escape pods. Miraculously, the ship holds together, and now you're in orbit, heading to the moon without support.",
+        "Your colleagues launch their escape pods. To your surprise, the ship holds, and now you're in orbit, heading to the moon without any support.",
+        "Your fellow astronauts release their escape pods. By some miracle, the ship remains intact, and you're now in orbit on your way to the moon, unsupported.",
+        "Your teammates launch their escape pods. Against all odds, the ship stays intact, and you're now in orbit, making your way to the moon with no backup."
+    ],
+    "stop.game.dialog": [
+        "Game Over, thank you for playing"
+    ],
+    "suit_up.dialog": [
+        "Heading to the changing room, you gear up in your astronaut suit. Time to suit up!",
+        "In the changing room, you don your astronaut suit. Suit up!",
+        "Walking into the changing room, you prepare by putting on your astronaut suit. Suit up!",
+        "Walking to the changing room, you slip into your astronaut suit. It's time to suit up!",
+        "You enter the changing room and suit up in your astronaut gear. Time to get ready!",
+        "You head to the changing room and put on your astronaut suit. Ready to suit up!",
+        "You make your way to the changing room and get into your astronaut suit. Suit up!",
+        "You walk to the changing room and put on your astronaut suit. Suit up!",
+        "You walk to the changing room where you get on your astronaut suit. Suit up!"
+    ]
+}

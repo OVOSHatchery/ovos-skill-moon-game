@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-from setuptools import setup
-from os.path import abspath, dirname, join, isfile, isdir
+import os
 from os import walk
+from os.path import abspath, dirname, join, isfile, isdir
+
+from setuptools import setup
 
 # Define package information
 SKILL_CLAZZ = "Apollo11GameSkill"  # Make sure it matches __init__.py class name
-VERSION = "0.0.1"
-URL = "https://github.com/OVOSHatchery/ovos-skill-moon-game"
+URL = "https://github.com/OpenVoiceOS/ovos-skill-moon-game"
 AUTHOR = "OpenVoiceOS"
 EMAIL = "jarbasai@mailfence.com"
 LICENSE = "Apache2.0"
-DESCRIPTION = SKILL_CLAZZ # TODO
+DESCRIPTION = SKILL_CLAZZ  # TODO
 
 PYPI_NAME = URL.split("/")[-1]  # pip install PYPI_NAME
 
@@ -18,6 +19,30 @@ PYPI_NAME = URL.split("/")[-1]  # pip install PYPI_NAME
 SKILL_ID = f"{PYPI_NAME.lower()}.{AUTHOR.lower()}"
 SKILL_PKG = PYPI_NAME.lower().replace('-', '_')
 PLUGIN_ENTRY_POINT = f"{SKILL_ID}={SKILL_PKG}:{SKILL_CLAZZ}"
+
+
+def get_version():
+    """ Find the version of this skill"""
+    version_file = os.path.join(os.path.dirname(__file__), 'version.py')
+    major, minor, build, alpha = (None, None, None, None)
+    with open(version_file) as f:
+        for line in f:
+            if 'VERSION_MAJOR' in line:
+                major = line.split('=')[1].strip()
+            elif 'VERSION_MINOR' in line:
+                minor = line.split('=')[1].strip()
+            elif 'VERSION_BUILD' in line:
+                build = line.split('=')[1].strip()
+            elif 'VERSION_ALPHA' in line:
+                alpha = line.split('=')[1].strip()
+
+            if ((major and minor and build and alpha) or
+                    '# END_VERSION_BLOCK' in line):
+                break
+    version = f"{major}.{minor}.{build}"
+    if int(alpha):
+        version += f"a{alpha}"
+    return version
 
 
 # Function to parse requirements from file
@@ -50,7 +75,7 @@ def find_resource_files():
 # Setup configuration
 setup(
     name=PYPI_NAME,
-    version=VERSION,
+    version=get_version(),
     description=DESCRIPTION,
     url=URL,
     author=AUTHOR,

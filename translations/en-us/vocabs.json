@@ -1,0 +1,150 @@
+{
+    "CodeResetKeyword.voc": [
+        "reset"
+    ],
+    "MoonGameKeyword.voc": [
+        "apollo 11",
+        "moon adventure",
+        "moon game"
+    ],
+    "abortKeyword.voc": [
+        "1",
+        "abort",
+        "cancel"
+    ],
+    "boardKeyword.voc": [
+        "board",
+        "enter",
+        "go inside"
+    ],
+    "bootsKeyword.voc": [
+        "boot",
+        "boots",
+        "foot gear",
+        "footwear",
+        "shoes"
+    ],
+    "dothisKeyword.voc": [
+        "3",
+        "do this"
+    ],
+    "evacuateKeyword.voc": [
+        "1",
+        "away",
+        "escape",
+        "evacuate",
+        "flee",
+        "run"
+    ],
+    "examineKeyword.voc": [
+        "1",
+        "check",
+        "examination",
+        "examine",
+        "inspect",
+        "inspection"
+    ],
+    "glovesKeyword.voc": [
+        "glove",
+        "gloves",
+        "hand gear"
+    ],
+    "harshKeyword.voc": [
+        "2",
+        "asshole",
+        "harsh",
+        "harshly",
+        "mean"
+    ],
+    "helmetKeyword.voc": [
+        "head gear",
+        "helmet",
+        "helmets"
+    ],
+    "ignoreKeyword.voc": [
+        "2",
+        "ignore"
+    ],
+    "landKeyword.voc": [
+        "1",
+        "disengage",
+        "land",
+        "touch down"
+    ],
+    "noKeyword.voc": [
+        "denied",
+        "i do not",
+        "negative",
+        "never",
+        "no",
+        "nop"
+    ],
+    "orbitKeyword.voc": [
+        "orbit"
+    ],
+    "questions.voc": [
+        "Am I going to die on this trip?",
+        "Do you like me?",
+        "Do you think we aren't alone in the universe",
+        "Do you think we'll survive?",
+        "Do you trust the team?",
+        "Does mission control have confidence in us?"
+    ],
+    "silentKeyword.voc": [
+        "3",
+        "no answer",
+        "not answer",
+        "not at all",
+        "nothing",
+        "quiet",
+        "silent",
+        "silently"
+    ],
+    "spacesuitKeyword.voc": [
+        "body gear",
+        "suit"
+    ],
+    "speechKeyword.voc": [
+        "2",
+        "speech",
+        "terrible"
+    ],
+    "start.voc": [
+        "begin",
+        "play",
+        "start"
+    ],
+    "stayKeyword.voc": [
+        "2",
+        "enter",
+        "inside",
+        "stay"
+    ],
+    "stopKeyword.voc": [
+        "abort",
+        "cancel",
+        "exit",
+        "stop"
+    ],
+    "survivalKeyword.voc": [
+        "1",
+        "percent",
+        "percentage",
+        "survival"
+    ],
+    "warmKeyword.voc": [
+        "1",
+        "friend",
+        "friendly",
+        "warm",
+        "warmly"
+    ],
+    "yesKeyword.voc": [
+        "affirmative",
+        "i accept",
+        "i do",
+        "obviously",
+        "off course",
+        "yes"
+    ]
+}
