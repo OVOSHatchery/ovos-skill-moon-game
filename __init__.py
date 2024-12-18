@@ -1,30 +1,40 @@
-from typing import Optional, Dict
+from typing import List
 
-from ovos_bus_client.message import Message
-from ovos_bus_client.util import get_message_lang
 from ovos_number_parser import extract_number
-from ovos_workshop.decorators import intent_handler
 from ovos_workshop.decorators import layer_intent, enables_layer, disables_layer, resets_layers
 from ovos_workshop.intents import IntentBuilder
-from ovos_workshop.skills import OVOSSkill
+from ovos_workshop.skills.game_skill import ConversationalGameSkill
 
 
-class Apollo11GameSkill(OVOSSkill):
+class Apollo11GameSkill(ConversationalGameSkill):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.playing = False
+        super().__init__(skill_voc_filename="",
+                         skill_icon="",
+                         *args, **kwargs)
         self.equipped = []
         self.entries = 0
         self.current_question = 0
         self.sanity = 0
         self.entered_code = []
-        self.items = self.resources.load_list_file("items") or ["gloves",
-                                                                "boots",
-                                                                "helmet",
-                                                                "body suit"]
         self.code = ["9", "0", "2", "1", "0"]
-        self.questions = self.resources.load_list_file("questions") or [
+
+    def initialize(self):
+        # start with all game states disabled
+        self.intent_layers.disable()
+
+    @property
+    def items(self) -> List[str]:
+        # it's a property to ensure language matches session
+        # self.resources is lang aware
+        return (self.resources.load_list_file("items") or
+                ["gloves", "boots", "helmet", "body suit"])
+
+    @property
+    def questions(self) -> List[str]:
+        # it's a property to ensure language matches session
+        # self.resources is lang aware
+        return self.resources.load_list_file("questions") or [
             "Do you like me?",
             "Do you think we'll survive?",
             "Do you trust the team?",
@@ -33,52 +43,110 @@ class Apollo11GameSkill(OVOSSkill):
             "Am I going to die on this trip?"
         ]
 
-    def initialize(self):
-        # start with all game states disabled
-        self.intent_layers.disable()
-
-    # game control
-    def handle_deactivate(self, message):
-        """ skill is no longer considered active by the intent service
-        converse method will not be called, skills might want to reset state here
-
-        ovos-core only + OVOS monkey patch skill
-        """
-        self.log.debug("game abandoned! skill kicked out of active skill list!!!")
-        self.handle_game_over(message)
-
-    @intent_handler(IntentBuilder("StartApollo11Intent"). \
-                    optionally("startKeyword"). \
-                    require("MoonGameKeyword"))
-    def handle_start_intent(self, message=None):
-        if not self.playing:
-            self.playing = True
+    #####################################################################
+    # abstract methods from base class that every game needs to implement
+    def on_play_game(self):
+        if not self.is_playing:
             self.speak_dialog("start.game")
             self.handle_intro()
         else:
             self.speak_dialog("already.started")
 
-    @layer_intent(IntentBuilder("StopApollo11Intent"). \
-                  require("stopKeyword"). \
-                  optionally("MoonGameKeyword"),
-                  layer_name="stop_game")
-    @resets_layers()
-    def handle_game_over(self, message=None):
-        if self.playing:
-            self.speak_dialog("stop.game")
-            self.playing = False
-            self.equipped = []
-            self.entries = 0
-            self.sanity = 0
-            self.current_question = 0
-            self.entered_code = []
+    def on_abandon_game(self):
+        self.log.debug("game abandoned! skill kicked out of active skill list!!!")
+        self.handle_game_over()
 
+    def on_stop_game(self):
+        self.handle_game_over()
+
+    def on_pause_game(self):
+        """TODO speak a error dialog here ?"""
+        # maybe make on_abandon_game call self.activate while paused?
+        # so the skill doesnt time out
+
+    def on_resume_game(self):
+        """TODO speak a error dialog here ?"""
+        # repeat last question before pause
+
+    def on_save_game(self):
+        """TODO speak a error dialog here ?"""
+        # we could save current layer to file and restore it
+
+    def on_load_game(self):
+        """TODO speak a error dialog here ?"""
+        # we could save current layer to file and restore it
+
+    def on_game_command(self, utterance: str, lang: str):
+        """pipe user input that wasnt caught by intents to the game
+        do any intent matching or normalization here
+        don't forget to self.speak the game output too!
+        """
+        self.log.debug("Skill intents wont trigger, handle game action in converse")
+
+        # take corrective action when no intent matched
+        if self.intent_layers.is_active("guard") or \
+                self.intent_layers.is_active("guard2"):
+            self.speak_dialog("guard_dead")
+            self.handle_game_over()
+        elif self.intent_layers.is_active("briefing"):
+            self.speak_dialog("briefing_other")
+            self.briefing_question2()
+        elif self.intent_layers.is_active("briefing2"):
+            self.suit_up()
+        elif self.intent_layers.is_active("suit_up"):
+            self.handle_board()
+        elif self.intent_layers.is_active("boarding"):
+            self.speak_dialog("boarding_dead")
+            self.handle_game_over()
+        elif self.intent_layers.is_active("evacuation"):
+            self.speak_dialog("evacuate_dead")
+            self.handle_game_over()
+        elif self.intent_layers.is_active("launch_codes"):
+            number = extract_number(utterance, lang=lang)
+            if number is not False:
+                number = str(int(number))
+                if len(number) > 1:
+                    self.speak_dialog("code_one_at_time",
+                                      expect_response=True)
+                elif number.isdigit():
+                    self.entered_code.append(number)
+                    self.speak_dialog("code_enter_number",
+                                      {"number": number},
+                                      expect_response=True)
+                    if len(self.entered_code) == len(self.code):
+                        if self.entered_code == self.code:
+                            self.correct_code()
+                        else:
+                            self.wrong_code()
+                else:
+                    self.speak_dialog("code_invalid", expect_response=True)
+            else:
+                self.speak_dialog("code_invalid", expect_response=True)
+        elif self.intent_layers.is_active("orbit"):
+            self.speak_dialog("colin_other")
+            self.next_question()
+        else:
+            self.speak_dialog("invalid.command", expect_response=True)
+
+    ###############
+    # This game is implemented via IntentLayers
+    # when no intent matches self.on_game_command is called
+    # IntentLayer handlers are defined below
     @enables_layer(layer_name="guard")
     @enables_layer(layer_name="stop_game")
     def handle_intro(self):
         self.speak_dialog("reach_gate")
         self.speak_dialog("guard")
         self.speak_dialog("present_id", expect_response=True)
+
+    @resets_layers()
+    def handle_game_over(self):
+        self.speak_dialog("stop.game")
+        self.equipped = []
+        self.entries = 0
+        self.sanity = 0
+        self.current_question = 0
+        self.entered_code = []
 
     # layer 1
     @layer_intent(IntentBuilder("Yes1Apollo11Intent").require("yesKeyword"),
@@ -235,7 +303,7 @@ class Apollo11GameSkill(OVOSSkill):
     def board(self):
         self.speak_dialog("boarding", expect_response=True)
 
-    def can_board(self):
+    def can_board(self) -> bool:
         return all(item in self.equipped for item in self.items)
 
     # board ship - layer 6
@@ -375,88 +443,3 @@ class Apollo11GameSkill(OVOSSkill):
     def handle_pencil_no(self, message=None):
         self.speak_dialog("pencil_no")
         self.handle_game_over()
-
-    def calc_intent(self, utterance: str, lang: str) -> Optional[Dict[str, str]]:
-        # let's see what intent ovos-core will assign to the utterance
-        # NOTE: converse, common_query and fallbacks are not included in this check
-        response = self.bus.wait_for_response(Message("intent.service.intent.get",
-                                                      {"utterance": utterance, "lang": lang}),
-                                              "intent.service.intent.reply",
-                                              timeout=0.5)
-        if not response:
-            return None
-        return response.data["intent"]
-
-    def will_trigger(self, utterance: str, lang: str) -> bool:
-        # determine if an intent from this skill
-        # will be selected by ovos-core
-        intent = self.calc_intent(utterance, lang)
-        skill_id = intent["skill_id"] if intent else ""
-        return skill_id == self.skill_id
-
-    # take corrective action
-    def converse(self, message: Message):
-        utterances = message.data["utterances"]
-        lang = get_message_lang(message)
-
-        if not self.playing:
-            return False
-
-        if not utterances:
-            return True  # empty speech, happens if you write in cli answer
-            # while stt is active, gets 2 converses with cli utt + None
-
-        for utterance in utterances:
-            # will an intent from this skill trigger ?
-            if self.will_trigger(utterance, lang):
-                # dont consume utterance, we accounted for this action with
-                # some intent
-                return False
-            self.log.debug(
-                "Skill wont trigger, handle game action in converse")
-
-            # take corrective action when no intent matched
-            if self.intent_layers.is_active("guard") or \
-                    self.intent_layers.is_active("guard2"):
-                self.speak_dialog("guard_dead")
-                self.handle_game_over()
-            elif self.intent_layers.is_active("briefing"):
-                self.speak_dialog("briefing_other")
-                self.briefing_question2()
-            elif self.intent_layers.is_active("briefing2"):
-                self.suit_up()
-            elif self.intent_layers.is_active("suit_up"):
-                self.handle_board()
-            elif self.intent_layers.is_active("boarding"):
-                self.speak_dialog("boarding_dead")
-                self.handle_game_over()
-            elif self.intent_layers.is_active("evacuation"):
-                self.speak_dialog("evacuate_dead")
-                self.handle_game_over()
-            elif self.intent_layers.is_active("launch_codes"):
-                number = extract_number(utterance, lang=lang)
-                if number is not False:
-                    number = str(int(number))
-                    if len(number) > 1:
-                        self.speak_dialog("code_one_at_time",
-                                          expect_response=True)
-                    elif number.isdigit():
-                        self.entered_code.append(number)
-                        self.speak_dialog("code_enter_number",
-                                          {"number": number},
-                                          expect_response=True)
-                        if len(self.entered_code) == len(self.code):
-                            if self.entered_code == self.code:
-                                self.correct_code()
-                            else:
-                                self.wrong_code()
-                    else:
-                        self.speak_dialog("code_invalid", expect_response=True)
-                else:
-                    self.speak_dialog("code_invalid", expect_response=True)
-            elif self.intent_layers.is_active("orbit"):
-                self.speak_dialog("colin_other")
-                self.next_question()
-            else:
-                self.speak_dialog("invalid.command", expect_response=True)
-        return True
