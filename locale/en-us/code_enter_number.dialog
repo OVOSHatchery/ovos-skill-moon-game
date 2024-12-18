@@ -1,1 +1,8 @@
-you entered {number}
+You entered {number}.
+You have entered {number}.
+The number you entered is {number}.
+{number} is what you entered.
+You’ve entered {number}.
+The input was {number}.
+You typed in {number}.
+{number} is the value you entered.

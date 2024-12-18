@@ -1,1 +1,8 @@
-you equipped {item}
+You’ve equipped {item}.
+{item} has been equipped.
+You now have {item} equipped.
+{item} is now equipped.
+You’re all set with {item}.
+{item} is now in place.
+{item} is equipped.
+You’ve successfully equipped {item}.

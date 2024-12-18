@@ -1,2 +1,8 @@
-you already have {item} equipped
 you already equipped {item}
+You already have {item} equipped.
+{item} is already equipped.
+You're already using {item}.
+{item} is currently equipped.
+You’re already wearing {item}.
+{item} is already in use.
+You’ve already put on {item}.
