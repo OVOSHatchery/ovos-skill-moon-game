@@ -1,1 +1,1 @@
-ovos_workshop>=0.0.5
+ovos_workshop>=3.2.0
