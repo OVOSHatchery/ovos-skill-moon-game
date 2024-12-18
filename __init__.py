@@ -133,6 +133,8 @@ class Apollo11GameSkill(ConversationalGameSkill):
         self.sanity = 0
         self.current_question = 0
         self.entered_code = []
+        self._playing.clear()
+        self._paused.clear()
 
     # layer 1
     @layer_intent(IntentBuilder("Yes1Apollo11Intent").
