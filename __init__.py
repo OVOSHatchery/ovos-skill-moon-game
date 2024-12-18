@@ -9,8 +9,9 @@ from ovos_workshop.skills.game_skill import ConversationalGameSkill
 class Apollo11GameSkill(ConversationalGameSkill):
 
     def __init__(self, *args, **kwargs):
-        super().__init__(skill_voc_filename="",
-                         skill_icon="",
+        super().__init__(skill_voc_filename="", # TODO
+                         skill_icon="", # TODO
+                         game_image = "", # TODO
                          *args, **kwargs)
         self.equipped = []
         self.entries = 0
