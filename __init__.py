@@ -60,23 +60,6 @@ class Apollo11GameSkill(ConversationalGameSkill):
     def on_stop_game(self):
         self.handle_game_over()
 
-    def on_pause_game(self):
-        """TODO speak a error dialog here ?"""
-        # maybe make on_abandon_game call self.activate while paused?
-        # so the skill doesnt time out
-
-    def on_resume_game(self):
-        """TODO speak a error dialog here ?"""
-        # repeat last question before pause
-
-    def on_save_game(self):
-        """TODO speak a error dialog here ?"""
-        # we could save current layer to file and restore it
-
-    def on_load_game(self):
-        """TODO speak a error dialog here ?"""
-        # we could save current layer to file and restore it
-
     def on_game_command(self, utterance: str, lang: str):
         """pipe user input that wasnt caught by intents to the game
         do any intent matching or normalization here
