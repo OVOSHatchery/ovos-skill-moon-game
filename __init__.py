@@ -10,7 +10,7 @@ from ovos_workshop.skills.game_skill import ConversationalGameSkill
 class Apollo11GameSkill(ConversationalGameSkill):
 
     def __init__(self, *args, **kwargs):
-        img = os.path.join(os.path.dirname(__file__), "res", "img.png")
+        img = os.path.join(os.path.dirname(__file__), "res", "bg.png")
         icon = os.path.join(os.path.dirname(__file__), "res", "img_small.png")
         super().__init__(skill_voc_filename="MoonGameKeyword",
                          skill_icon=icon, game_image=img,
